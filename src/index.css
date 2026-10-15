@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #080812;
+  --color-background-secondary: #101020;
+  --color-background-card: #151529;
+  --color-accent-primary: #7c3aed;
+  --color-accent-secondary: #a855f7;
+  --color-accent-highlight: #22d3ee;
+  --color-accent-electric: #a855f7;
+  --color-brand-purple: #7c3aed;
+  --color-brand-violet: #a855f7;
+  --color-brand-cyan: #22d3ee;
+  --color-text-primary: #f8fafc;
+  --color-text-secondary: #a1a1b8;
+  --font-general: "Plus Jakarta Sans", "Inter", sans-serif;
+  --font-sora: "Sora", sans-serif;
+  --font-inter: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+:root {
+  --accent-primary: #7c3aed;
+  --accent-secondary: #a855f7;
+  --accent-highlight: #22d3ee;
+  --accent-electric: #a855f7;
+  --bg-main: #080812;
+  --bg-card: #151529;
+}
+
+body {
+  background-color: #080812;
+  color: #f8fafc;
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: #7c3aed;
+  color: #ffffff;
+}
+
+/* Custom Utilities */
+.mask-radial-fade {
+  mask-image: radial-gradient(circle at center, #000 40%, transparent 80%);
+  -webkit-mask-image: radial-gradient(circle at center, #000 40%, transparent 80%);
+}
+
+.card-lift {
+  transition: transform .4s cubic-bezier(.25, 1, .5, 1), box-shadow .4s cubic-bezier(.25, 1, .5, 1), border-color .4s cubic-bezier(.25, 1, .5, 1);
+  will-change: transform, box-shadow;
+}
+
+.card-lift:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 20px 40px -15px rgba(124, 58, 237, .35), 0 0 25px rgba(168, 85, 247, .2);
+  border-color: rgba(168, 85, 247, 0.45);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #080812;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(168, 85, 247, 0.35);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(124, 58, 237, 0.8);
+}
