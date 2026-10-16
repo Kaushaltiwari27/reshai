@@ -145,7 +145,7 @@ export const SecurityPage: React.FC = () => {
             </div>
 
             <a
-              href="mailto:security@reshai.io?subject=Request%20SOC%202%20Audit%20Packet"
+              href="mailto:reshai363@gmail.com?subject=Request%20SOC%202%20Audit%20Packet"
               className="px-6 py-3.5 bg-gradient-to-r from-[#6D28D9] via-[#7C3AED] to-[#9333EA] rounded-xl text-white font-semibold text-xs font-mono uppercase tracking-wider flex items-center gap-2 shrink-0 shadow-[0_4px_20px_rgba(109,40,217,0.35)] hover:shadow-[0_8px_30px_rgba(109,40,217,0.5)] transition-all"
             >
               <Download size={15} />

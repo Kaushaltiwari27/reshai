@@ -50,7 +50,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking }) => {
                 </svg>
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/company/resh-aii/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="RESH AI LinkedIn"
@@ -61,7 +61,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking }) => {
                 </svg>
               </a>
               <a
-                href="https://github.com"
+                href="https://github.com/Kaushaltiwari27"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="RESH AI GitHub"
@@ -146,24 +146,26 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking }) => {
             </h4>
             <ul className="space-y-3">
               <li>
-                <span className="text-[#777185] text-xs block">General Inquiries</span>
+                <span className="text-[#777185] text-xs block">Official Email &amp; Inquiries</span>
                 <Magnetic>
                   <a
-                    href="mailto:contact@reshai.io"
+                    href="mailto:reshai363@gmail.com"
                     className="text-[#111018] hover:text-[#6D28D9] transition-colors text-sm font-mono block font-semibold"
                   >
-                    contact@reshai.io
+                    reshai363@gmail.com
                   </a>
                 </Magnetic>
               </li>
               <li>
-                <span className="text-[#777185] text-xs block">Enterprise Solutions</span>
+                <span className="text-[#777185] text-xs block">LinkedIn Network</span>
                 <Magnetic>
                   <a
-                    href="mailto:enterprise@reshai.io"
+                    href="https://www.linkedin.com/company/resh-aii/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-[#111018] hover:text-[#6D28D9] transition-colors text-sm font-mono block font-semibold"
                   >
-                    enterprise@reshai.io
+                    linkedin.com/company/resh-aii
                   </a>
                 </Magnetic>
               </li>

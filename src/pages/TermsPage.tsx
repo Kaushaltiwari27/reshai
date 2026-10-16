@@ -145,7 +145,7 @@ export const TermsPage: React.FC = () => {
               Inquiries &amp; Enterprise Execution
             </h2>
             <p className="text-[#777185] text-xs">
-              To request a countersigned Master Subscription Agreement or discuss custom enterprise amendments, contact <a href="mailto:enterprise@reshai.io" className="text-[#6D28D9] font-semibold underline">enterprise@reshai.io</a>.
+              To request a countersigned Master Subscription Agreement or discuss custom enterprise amendments, contact <a href="mailto:reshai363@gmail.com" className="text-[#6D28D9] font-semibold underline">reshai363@gmail.com</a>.
             </p>
           </section>
         </div>

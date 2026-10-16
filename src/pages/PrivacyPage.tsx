@@ -189,8 +189,8 @@ export const PrivacyPage: React.FC = () => {
             </p>
             <p>
               To initiate an audit or request data erasure, contact our Data Protection Team at{' '}
-              <a href="mailto:privacy@reshai.io" className="text-[#6D28D9] font-semibold underline hover:text-[#7C3AED] transition-colors">
-                privacy@reshai.io
+              <a href="mailto:reshai363@gmail.com" className="text-[#6D28D9] font-semibold underline hover:text-[#7C3AED] transition-colors">
+                reshai363@gmail.com
               </a>
               . All requests are acknowledged within 24 hours.
             </p>
@@ -201,7 +201,7 @@ export const PrivacyPage: React.FC = () => {
               Contact Privacy &amp; Legal Counsel
             </h2>
             <p className="text-[#777185] text-xs">
-              For Data Processing Agreements (DPA), Business Associate Agreements (BAA), or custom security questionnaires, email our legal team at <a href="mailto:legal@reshai.io" className="text-[#6D28D9] underline font-semibold">legal@reshai.io</a>.
+              For Data Processing Agreements (DPA), Business Associate Agreements (BAA), or custom security questionnaires, email our legal team at <a href="mailto:reshai363@gmail.com" className="text-[#6D28D9] underline font-semibold">reshai363@gmail.com</a>.
             </p>
           </section>
         </div>
