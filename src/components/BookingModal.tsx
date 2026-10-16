@@ -10,7 +10,10 @@ import {
   Building,
   Mail,
   Phone,
+  Clock,
   Loader2,
+  AlertCircle,
+  Video,
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
@@ -26,12 +29,14 @@ export const BookingModal: React.FC<BookingModalProps> = ({
   preselectedPlan = 'Autonomous AI Voice Agents',
 }) => {
   const [selectedSolution, setSelectedSolution] = useState(preselectedPlan);
+  
+  // Manual typeable Date & Time state
   const [selectedDate, setSelectedDate] = useState('Tomorrow');
   const [selectedTime, setSelectedTime] = useState('02:30 PM');
   const [timezone, setTimezone] = useState('IST (UTC +5:30)');
-  const [meetingType, setMeetingType] = useState<'google_meet' | 'phone' | 'zoom'>('google_meet');
+  const [meetingType, setMeetingType] = useState<'Google Meet' | 'Zoom' | 'Phone Call' | 'WhatsApp'>('Google Meet');
 
-  // Form State
+  // Form Fields
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -40,12 +45,18 @@ export const BookingModal: React.FC<BookingModalProps> = ({
     notes: '',
   });
 
+  // Validation Errors
+  const [errors, setErrors] = useState<{
+    name?: string;
+    email?: string;
+  }>({});
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  // Generate dynamic, real-world dates starting from current day
-  const availableDates = useMemo(() => {
-    const dates = [];
+  // Quick suggestions for dates
+  const quickDateChips = useMemo(() => {
+    const list = [];
     const today = new Date();
     for (let i = 0; i < 4; i++) {
       const d = new Date(today);
@@ -56,17 +67,18 @@ export const BookingModal: React.FC<BookingModalProps> = ({
           : i === 1
           ? 'Tomorrow'
           : d.toLocaleDateString('en-US', { weekday: 'short' });
-      const day = d.toLocaleDateString('en-US', {
+      const formatted = d.toLocaleDateString('en-US', {
         month: 'short',
         day: 'numeric',
-        weekday: 'short',
+        year: 'numeric',
       });
-      dates.push({ label, day });
+      list.push({ label, fullText: `${label} (${formatted})` });
     }
-    return dates;
+    return list;
   }, []);
 
-  const availableTimes = [
+  // Quick suggestions for times
+  const quickTimeChips = [
     '10:00 AM',
     '11:30 AM',
     '02:30 PM',
@@ -93,11 +105,12 @@ export const BookingModal: React.FC<BookingModalProps> = ({
       }
       setIsSubmitting(false);
       setIsSubmitted(false);
-      if (availableDates.length > 1) {
-        setSelectedDate(availableDates[1].label); // Default to Tomorrow
+      setErrors({});
+      if (quickDateChips.length > 1 && !selectedDate) {
+        setSelectedDate(quickDateChips[1].fullText);
       }
     }
-  }, [isOpen, preselectedPlan, availableDates]);
+  }, [isOpen, preselectedPlan, quickDateChips]);
 
   // Handle Escape key to close modal
   useEffect(() => {
@@ -110,33 +123,60 @@ export const BookingModal: React.FC<BookingModalProps> = ({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose]);
 
+  const validate = () => {
+    const newErrors: { name?: string; email?: string } = {};
+
+    if (!formData.name.trim()) {
+      newErrors.name = 'Please enter your full name';
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = 'Please enter your work email';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
+      newErrors.email = 'Please enter a valid email address (e.g. name@company.com)';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name.trim() || !formData.email.trim()) return;
+
+    if (!validate()) {
+      return;
+    }
 
     setIsSubmitting(true);
 
-    // Simulate reliable reservation process
+    // Reliable submission simulation
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
       try {
         confetti({
-          particleCount: 90,
-          spread: 75,
+          particleCount: 100,
+          spread: 80,
           origin: { y: 0.6 },
           colors: ['#6D28D9', '#7C3AED', '#9333EA', '#C084FC'],
         });
       } catch (err) {
         console.warn('Confetti error:', err);
       }
-    }, 850);
+    }, 800);
   };
 
   const handleClose = () => {
     setIsSubmitted(false);
     setIsSubmitting(false);
+    setErrors({});
     onClose();
+  };
+
+  const handleResetForm = () => {
+    setIsSubmitted(false);
+    setIsSubmitting(false);
+    setErrors({});
   };
 
   return (
@@ -166,14 +206,14 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                 <div className="flex items-center gap-2 mb-1">
                   <span className="w-2 h-2 rounded-full bg-[#7C3AED] animate-pulse" />
                   <span className="text-xs font-mono font-bold text-[#6D28D9] uppercase tracking-wider">
-                    RESH AI Consultation
+                    RESH AI Strategy Call
                   </span>
                 </div>
                 <h3 className="text-xl sm:text-2xl font-bold text-[#111018]">
                   Schedule Strategy Call
                 </h3>
                 <p className="text-xs text-[#777185] mt-0.5">
-                  30-min technical architecture audit with a Senior AI Systems Engineer.
+                  30-min technical architecture review with Senior AI Systems Engineers.
                 </p>
               </div>
 
@@ -190,32 +230,30 @@ export const BookingModal: React.FC<BookingModalProps> = ({
             {/* Scrollable Form Body */}
             <div className="p-6 sm:p-8 overflow-y-auto flex-1">
               {!isSubmitted ? (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} noValidate className="space-y-6">
                   {/* 1. Solution Focus */}
                   <div>
                     <label className="block text-xs font-bold text-[#111018] uppercase tracking-wider mb-2">
-                      1. Select Solution Focus
+                      1. Primary Automation Focus
                     </label>
-                    <div className="relative">
-                      <select
-                        value={selectedSolution}
-                        onChange={(e) => setSelectedSolution(e.target.value)}
-                        className="w-full px-4 py-3 bg-[#F8F7FC] border border-[#E9E5F2] rounded-xl text-sm font-semibold text-[#111018] outline-none focus:border-[#7C3AED] focus:ring-2 focus:ring-[#7C3AED]/20 transition-all cursor-pointer"
-                      >
-                        {solutions.map((sol) => (
-                          <option key={sol} value={sol}>
-                            {sol}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
+                    <select
+                      value={selectedSolution}
+                      onChange={(e) => setSelectedSolution(e.target.value)}
+                      className="w-full px-4 py-3 bg-[#F8F7FC] border border-[#E9E5F2] rounded-xl text-sm font-semibold text-[#111018] outline-none focus:border-[#7C3AED] focus:ring-2 focus:ring-[#7C3AED]/20 transition-all cursor-pointer"
+                    >
+                      {solutions.map((sol) => (
+                        <option key={sol} value={sol}>
+                          {sol}
+                        </option>
+                      ))}
+                    </select>
                   </div>
 
-                  {/* 2. Schedule Date & Slot */}
-                  <div>
-                    <div className="flex items-center justify-between mb-2">
+                  {/* 2. Manual Date & Timing with Quick Pick */}
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
                       <label className="text-xs font-bold text-[#111018] uppercase tracking-wider">
-                        2. Preferred Date &amp; Time
+                        2. Preferred Date &amp; Timing (Type Manually or Click Quick Picks)
                       </label>
                       <select
                         value={timezone}
@@ -230,41 +268,82 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                       </select>
                     </div>
 
-                    {/* Date Cards */}
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-3">
-                      {availableDates.map((item) => (
-                        <button
-                          key={item.label}
-                          type="button"
-                          onClick={() => setSelectedDate(item.label)}
-                          className={`p-2.5 rounded-xl border text-center transition-all cursor-pointer ${
-                            selectedDate === item.label
-                              ? 'bg-[#F2EDFF] border-[#6D28D9] text-[#6D28D9] shadow-sm font-bold ring-1 ring-[#6D28D9]'
-                              : 'bg-white border-[#E9E5F2] text-[#4B4659] hover:border-[#D8C7FA] hover:bg-[#F8F7FC]'
-                          }`}
-                        >
-                          <div className="text-xs font-bold">{item.label}</div>
-                          <div className="text-[11px] text-[#777185] mt-0.5">{item.day}</div>
-                        </button>
-                      ))}
+                    {/* Manual Date Input */}
+                    <div>
+                      <div className="text-xs font-semibold text-[#4B4659] mb-1.5 flex items-center justify-between">
+                        <span className="flex items-center gap-1.5">
+                          <Calendar size={13} className="text-[#6D28D9]" />
+                          <span>Date (Type or pick manually):</span>
+                        </span>
+                        <span className="text-[11px] text-[#777185]">e.g. Tomorrow, 24 Oct, or 2026-10-25</span>
+                      </div>
+                      <div className="relative">
+                        <input
+                          type="text"
+                          value={selectedDate}
+                          onChange={(e) => setSelectedDate(e.target.value)}
+                          placeholder="Type your preferred date (e.g. Tomorrow, Monday 20th Oct)..."
+                          className="w-full px-4 py-2.5 bg-white border border-[#E9E5F2] rounded-xl text-sm font-medium text-[#111018] placeholder-slate-400 outline-none focus:border-[#7C3AED] focus:ring-2 focus:ring-[#7C3AED]/20 transition-all shadow-xs"
+                        />
+                      </div>
+
+                      {/* Quick Date Chips */}
+                      <div className="flex flex-wrap items-center gap-1.5 mt-2">
+                        <span className="text-[11px] text-[#777185] mr-1">Quick pick:</span>
+                        {quickDateChips.map((chip) => (
+                          <button
+                            key={chip.label}
+                            type="button"
+                            onClick={() => setSelectedDate(chip.fullText)}
+                            className={`px-2.5 py-1 text-xs rounded-lg border transition-all cursor-pointer ${
+                              selectedDate === chip.fullText
+                                ? 'bg-[#F2EDFF] border-[#6D28D9] text-[#6D28D9] font-bold'
+                                : 'bg-[#F8F7FC] border-[#E9E5F2] text-[#4B4659] hover:border-[#D8C7FA]'
+                            }`}
+                          >
+                            {chip.label}
+                          </button>
+                        ))}
+                      </div>
                     </div>
 
-                    {/* Time Slots */}
-                    <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
-                      {availableTimes.map((time) => (
-                        <button
-                          key={time}
-                          type="button"
-                          onClick={() => setSelectedTime(time)}
-                          className={`py-2 px-1 text-center text-xs font-mono rounded-lg border transition-all cursor-pointer ${
-                            selectedTime === time
-                              ? 'bg-gradient-to-r from-[#6D28D9] to-[#7C3AED] border-[#6D28D9] text-white font-bold shadow-sm'
-                              : 'bg-white border-[#E9E5F2] text-[#4B4659] hover:border-[#D8C7FA] hover:text-[#111018]'
-                          }`}
-                        >
-                          {time}
-                        </button>
-                      ))}
+                    {/* Manual Time Input */}
+                    <div>
+                      <div className="text-xs font-semibold text-[#4B4659] mb-1.5 flex items-center justify-between">
+                        <span className="flex items-center gap-1.5">
+                          <Clock size={13} className="text-[#6D28D9]" />
+                          <span>Time Slot (Type custom time):</span>
+                        </span>
+                        <span className="text-[11px] text-[#777185]">e.g. 02:30 PM, 11:00 AM, 5 PM</span>
+                      </div>
+                      <div className="relative">
+                        <input
+                          type="text"
+                          value={selectedTime}
+                          onChange={(e) => setSelectedTime(e.target.value)}
+                          placeholder="Type preferred time (e.g. 02:30 PM, 11:00 AM, 4:15 PM)..."
+                          className="w-full px-4 py-2.5 bg-white border border-[#E9E5F2] rounded-xl text-sm font-mono font-medium text-[#111018] placeholder-slate-400 outline-none focus:border-[#7C3AED] focus:ring-2 focus:ring-[#7C3AED]/20 transition-all shadow-xs"
+                        />
+                      </div>
+
+                      {/* Quick Time Chips */}
+                      <div className="flex flex-wrap items-center gap-1.5 mt-2">
+                        <span className="text-[11px] text-[#777185] mr-1">Quick pick:</span>
+                        {quickTimeChips.map((time) => (
+                          <button
+                            key={time}
+                            type="button"
+                            onClick={() => setSelectedTime(time)}
+                            className={`px-2 py-0.5 text-xs font-mono rounded-lg border transition-all cursor-pointer ${
+                              selectedTime === time
+                                ? 'bg-[#6D28D9] border-[#6D28D9] text-white font-bold'
+                                : 'bg-[#F8F7FC] border-[#E9E5F2] text-[#4B4659] hover:border-[#D8C7FA]'
+                            }`}
+                          >
+                            {time}
+                          </button>
+                        ))}
+                      </div>
                     </div>
                   </div>
 
@@ -277,36 +356,60 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {/* Name */}
                       <div>
-                        <div className="text-xs font-semibold text-[#4B4659] mb-1">
-                          Full Name <span className="text-[#6D28D9]">*</span>
+                        <div className="text-xs font-semibold text-[#4B4659] mb-1 flex items-center justify-between">
+                          <span>Full Name <span className="text-red-500">*</span></span>
+                          {errors.name && (
+                            <span className="text-[11px] text-red-500 font-normal flex items-center gap-1">
+                              <AlertCircle size={11} />
+                              <span>{errors.name}</span>
+                            </span>
+                          )}
                         </div>
                         <div className="relative">
-                          <User size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+                          <User size={15} className={`absolute left-3.5 top-1/2 -translate-y-1/2 ${errors.name ? 'text-red-400' : 'text-slate-400'}`} />
                           <input
                             type="text"
-                            required
                             placeholder="Alex Morgan"
                             value={formData.name}
-                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                            className="w-full pl-10 pr-4 py-2.5 bg-white border border-[#E9E5F2] rounded-xl text-sm text-[#111018] placeholder-slate-400 outline-none focus:border-[#7C3AED] focus:ring-2 focus:ring-[#7C3AED]/20 transition-all shadow-xs"
+                            onChange={(e) => {
+                              setFormData({ ...formData, name: e.target.value });
+                              if (errors.name) setErrors({ ...errors, name: undefined });
+                            }}
+                            className={`w-full pl-10 pr-4 py-2.5 bg-white border rounded-xl text-sm text-[#111018] placeholder-slate-400 outline-none transition-all shadow-xs ${
+                              errors.name
+                                ? 'border-red-400 focus:border-red-500 focus:ring-2 focus:ring-red-100'
+                                : 'border-[#E9E5F2] focus:border-[#7C3AED] focus:ring-2 focus:ring-[#7C3AED]/20'
+                            }`}
                           />
                         </div>
                       </div>
 
                       {/* Email */}
                       <div>
-                        <div className="text-xs font-semibold text-[#4B4659] mb-1">
-                          Work Email <span className="text-[#6D28D9]">*</span>
+                        <div className="text-xs font-semibold text-[#4B4659] mb-1 flex items-center justify-between">
+                          <span>Work Email <span className="text-red-500">*</span></span>
+                          {errors.email && (
+                            <span className="text-[11px] text-red-500 font-normal flex items-center gap-1">
+                              <AlertCircle size={11} />
+                              <span>{errors.email}</span>
+                            </span>
+                          )}
                         </div>
                         <div className="relative">
-                          <Mail size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+                          <Mail size={15} className={`absolute left-3.5 top-1/2 -translate-y-1/2 ${errors.email ? 'text-red-400' : 'text-slate-400'}`} />
                           <input
                             type="email"
-                            required
                             placeholder="alex@company.com"
                             value={formData.email}
-                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                            className="w-full pl-10 pr-4 py-2.5 bg-white border border-[#E9E5F2] rounded-xl text-sm text-[#111018] placeholder-slate-400 outline-none focus:border-[#7C3AED] focus:ring-2 focus:ring-[#7C3AED]/20 transition-all shadow-xs"
+                            onChange={(e) => {
+                              setFormData({ ...formData, email: e.target.value });
+                              if (errors.email) setErrors({ ...errors, email: undefined });
+                            }}
+                            className={`w-full pl-10 pr-4 py-2.5 bg-white border rounded-xl text-sm text-[#111018] placeholder-slate-400 outline-none transition-all shadow-xs ${
+                              errors.email
+                                ? 'border-red-400 focus:border-red-500 focus:ring-2 focus:ring-red-100'
+                                : 'border-[#E9E5F2] focus:border-[#7C3AED] focus:ring-2 focus:ring-[#7C3AED]/20'
+                            }`}
                           />
                         </div>
                       </div>
@@ -350,26 +453,23 @@ export const BookingModal: React.FC<BookingModalProps> = ({
 
                     {/* Meeting Medium Selector */}
                     <div>
-                      <div className="text-xs font-semibold text-[#4B4659] mb-1.5">
-                        Preferred Video / Audio Channel
+                      <div className="text-xs font-semibold text-[#4B4659] mb-1.5 flex items-center gap-1.5">
+                        <Video size={13} className="text-[#6D28D9]" />
+                        <span>Meeting Platform</span>
                       </div>
-                      <div className="grid grid-cols-3 gap-2">
-                        {[
-                          { id: 'google_meet', label: 'Google Meet' },
-                          { id: 'zoom', label: 'Zoom' },
-                          { id: 'phone', label: 'Phone Call' },
-                        ].map((m) => (
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                        {(['Google Meet', 'Zoom', 'Phone Call', 'WhatsApp'] as const).map((m) => (
                           <button
-                            key={m.id}
+                            key={m}
                             type="button"
-                            onClick={() => setMeetingType(m.id as any)}
+                            onClick={() => setMeetingType(m)}
                             className={`py-2 px-2 text-center text-xs font-medium rounded-xl border transition-all cursor-pointer ${
-                              meetingType === m.id
+                              meetingType === m
                                 ? 'bg-[#F2EDFF] border-[#6D28D9] text-[#6D28D9] font-bold shadow-xs'
                                 : 'bg-white border-[#E9E5F2] text-[#4B4659] hover:bg-[#F8F7FC]'
                             }`}
                           >
-                            {m.label}
+                            {m}
                           </button>
                         ))}
                       </div>
@@ -394,16 +494,16 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                   <div className="flex items-center gap-2 text-[11px] text-[#777185] bg-[#F8F7FC] p-2.5 rounded-xl border border-[#E9E5F2]">
                     <ShieldCheck size={16} className="text-emerald-600 shrink-0" />
                     <span>
-                      <strong>Strict Enterprise Privacy:</strong> Signed NDAs prior to deep audit. Zero data model training guarantee.
+                      <strong>Strict Enterprise Privacy:</strong> Signed NDAs prior to deep audit. Zero model data training guarantee.
                     </span>
                   </div>
 
-                  {/* Action Buttons */}
+                  {/* Action Button */}
                   <div className="pt-2">
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full py-3.5 bg-gradient-to-r from-[#6D28D9] via-[#7C3AED] to-[#9333EA] rounded-xl text-white font-semibold text-sm flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(109,40,217,0.35)] hover:shadow-[0_8px_30px_rgba(109,40,217,0.5)] transition-all active:scale-[0.99] cursor-pointer disabled:opacity-70"
+                      className="w-full py-4 bg-gradient-to-r from-[#6D28D9] via-[#7C3AED] to-[#9333EA] rounded-xl text-white font-semibold text-sm flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(109,40,217,0.35)] hover:shadow-[0_8px_30px_rgba(109,40,217,0.5)] transition-all active:scale-[0.99] cursor-pointer disabled:opacity-70"
                     >
                       {isSubmitting ? (
                         <>
@@ -436,30 +536,34 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                     </h4>
                     <p className="text-[#4B4659] text-sm max-w-md mx-auto">
                       A calendar invite and direct access link have been dispatched to{' '}
-                      <strong className="text-[#111018]">{formData.email || 'your email'}</strong>.
+                      <strong className="text-[#111018]">{formData.email}</strong>.
                     </p>
                   </div>
 
-                  {/* Summary Card */}
+                  {/* Summary Card with exact typed date and time */}
                   <div className="bg-[#F8F7FC] border border-[#E9E5F2] rounded-2xl p-5 max-w-md mx-auto text-left space-y-2.5 text-xs font-mono shadow-xs">
+                    <div className="flex items-center justify-between text-[#777185]">
+                      <span>Client Name:</span>
+                      <span className="text-[#111018] font-bold">{formData.name}</span>
+                    </div>
                     <div className="flex items-center justify-between text-[#777185]">
                       <span>Solution Scope:</span>
                       <span className="text-[#111018] font-bold">{selectedSolution}</span>
                     </div>
                     <div className="flex items-center justify-between text-[#777185]">
-                      <span>Reserved Slot:</span>
-                      <span className="text-[#6D28D9] font-bold">
-                        {selectedDate} @ {selectedTime} ({timezone})
-                      </span>
+                      <span>Reserved Date:</span>
+                      <span className="text-[#6D28D9] font-bold">{selectedDate || 'Upcoming business day'}</span>
+                    </div>
+                    <div className="flex items-center justify-between text-[#777185]">
+                      <span>Reserved Time:</span>
+                      <span className="text-[#6D28D9] font-bold">{selectedTime || '02:30 PM'} ({timezone})</span>
                     </div>
                     <div className="flex items-center justify-between text-[#777185]">
                       <span>Meeting Medium:</span>
-                      <span className="text-[#111018] capitalize font-medium">
-                        {meetingType.replace('_', ' ')}
-                      </span>
+                      <span className="text-[#111018] font-medium">{meetingType}</span>
                     </div>
                     <div className="flex items-center justify-between text-[#777185]">
-                      <span>Assigned Engineer:</span>
+                      <span>Assigned Architect:</span>
                       <span className="text-[#6D28D9] font-semibold">
                         Senior AI Systems Architect
                       </span>
@@ -473,8 +577,8 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                         `RESH AI Technical Consultation: ${selectedSolution}`
                       )}&details=${encodeURIComponent(
                         `Strategy session with RESH AI Engineering team for ${
-                          formData.name || 'Client'
-                        } (${formData.company || 'Enterprise'}).`
+                          formData.name
+                        } (${formData.company || 'Enterprise'}). Platform: ${meetingType}. Date: ${selectedDate} at ${selectedTime}.`
                       )}`}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -485,10 +589,17 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                     </a>
                     <button
                       type="button"
-                      onClick={handleClose}
+                      onClick={handleResetForm}
                       className="w-full sm:w-auto px-6 py-3 bg-white border border-[#E9E5F2] rounded-xl text-[#4B4659] text-xs font-mono hover:text-[#111018] hover:bg-[#F8F7FC] transition-colors cursor-pointer shadow-xs"
                     >
-                      Done &amp; Return to Website
+                      Book Another Call
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleClose}
+                      className="w-full sm:w-auto px-6 py-3 bg-[#111018] rounded-xl text-white text-xs font-mono hover:bg-[#6D28D9] transition-colors cursor-pointer shadow-xs font-semibold"
+                    >
+                      Done &amp; Close
                     </button>
                   </div>
                 </motion.div>

@@ -220,35 +220,45 @@ export const BookCallPage: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Day Selection */}
+                {/* Day Selection - Manual & Quick Pick */}
                 <div>
-                  <label className="block text-xs font-bold text-[#111018] uppercase tracking-wider mb-2.5">
-                    Select Day
-                  </label>
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                  <div className="flex items-center justify-between mb-1.5">
+                    <label className="text-xs font-bold text-[#111018] uppercase tracking-wider">
+                      Preferred Date (Type manually or click quick pick)
+                    </label>
+                    <span className="text-[11px] text-[#777185]">e.g. 24 Oct, Tomorrow, Monday</span>
+                  </div>
+                  <input
+                    type="text"
+                    value={selectedDate}
+                    onChange={(e) => setSelectedDate(e.target.value)}
+                    placeholder="Type your preferred date (e.g. Tomorrow, Monday 20th Oct)..."
+                    className="w-full px-4 py-2.5 bg-white border border-[#E9E5F2] rounded-xl text-sm font-medium text-[#111018] placeholder-slate-400 outline-none focus:border-[#7C3AED] focus:ring-2 focus:ring-[#7C3AED]/20 transition-all shadow-xs mb-2"
+                  />
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                     {availableDates.map((item) => (
                       <button
                         key={item.label}
                         type="button"
-                        onClick={() => setSelectedDate(item.label)}
-                        className={`text-center p-3 rounded-xl border transition-all cursor-pointer ${
-                          selectedDate === item.label
+                        onClick={() => setSelectedDate(item.day)}
+                        className={`text-center p-2.5 rounded-xl border transition-all cursor-pointer ${
+                          selectedDate === item.day
                             ? 'bg-[#F2EDFF] border-[#6D28D9] text-[#6D28D9] font-bold shadow-sm'
                             : 'bg-[#F8F7FC] border-[#E9E5F2] text-[#4B4659] hover:border-[#D8C7FA]'
                         }`}
                       >
-                        <div className="font-bold text-sm">{item.label}</div>
+                        <div className="font-bold text-xs">{item.label}</div>
                         <div className="text-[11px] text-[#777185] mt-0.5">{item.day}</div>
                       </button>
                     ))}
                   </div>
                 </div>
 
-                {/* Time Selection */}
+                {/* Time Selection - Manual & Quick Pick */}
                 <div>
-                  <div className="flex items-center justify-between mb-2.5">
+                  <div className="flex items-center justify-between mb-1.5">
                     <label className="text-xs font-bold text-[#111018] uppercase tracking-wider">
-                      Select Available Time Slot
+                      Preferred Time Slot (Type custom time)
                     </label>
                     <select
                       value={timezone}
@@ -261,14 +271,20 @@ export const BookCallPage: React.FC = () => {
                       <option value="GMT (UTC +0:00)">GMT (UTC +0:00)</option>
                     </select>
                   </div>
-
+                  <input
+                    type="text"
+                    value={selectedTime}
+                    onChange={(e) => setSelectedTime(e.target.value)}
+                    placeholder="Type preferred time (e.g. 02:30 PM, 11:00 AM, 4:15 PM)..."
+                    className="w-full px-4 py-2.5 bg-white border border-[#E9E5F2] rounded-xl text-sm font-mono font-medium text-[#111018] placeholder-slate-400 outline-none focus:border-[#7C3AED] focus:ring-2 focus:ring-[#7C3AED]/20 transition-all shadow-xs mb-2"
+                  />
                   <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
                     {availableTimes.map((time) => (
                       <button
                         key={time}
                         type="button"
                         onClick={() => setSelectedTime(time)}
-                        className={`py-2.5 px-2 text-center text-xs font-mono rounded-lg border transition-all cursor-pointer ${
+                        className={`py-2 px-1 text-center text-xs font-mono rounded-lg border transition-all cursor-pointer ${
                           selectedTime === time
                             ? 'bg-[#6D28D9] border-[#6D28D9] text-white font-bold shadow-sm'
                             : 'bg-[#F8F7FC] border-[#E9E5F2] text-[#4B4659] hover:border-[#D8C7FA]'
