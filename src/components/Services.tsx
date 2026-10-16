@@ -27,8 +27,8 @@ const TiltCard: React.FC<TiltCardProps> = ({ children, className = '', onClick }
   const mouseXSpring = useSpring(x, { stiffness: 150, damping: 25 });
   const mouseYSpring = useSpring(y, { stiffness: 150, damping: 25 });
 
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ['8deg', '-8deg']);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ['-8deg', '8deg']);
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ['7deg', '-7deg']);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ['-7deg', '7deg']);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!ref.current) return;
@@ -63,21 +63,20 @@ const TiltCard: React.FC<TiltCardProps> = ({ children, className = '', onClick }
         rotateY,
         transformStyle: 'preserve-3d',
       }}
-      className={`relative w-full rounded-2xl bg-[#151529]/75 border border-purple-500/20 backdrop-blur-md overflow-hidden transition-all duration-300 hover:bg-[#151529]/95 hover:border-purple-400/50 p-8 sm:p-9 group cursor-pointer shadow-lg shadow-purple-950/10 hover:shadow-[0_0_30px_rgba(168,85,247,0.2)] ${className}`}
+      className={`relative w-full rounded-2xl bg-white border border-[#E9E5F2] overflow-hidden transition-all duration-300 hover:border-[#D8C7FA] p-8 sm:p-9 group cursor-pointer shadow-[0_4px_24px_rgba(109,40,217,0.06)] hover:shadow-[0_16px_40px_rgba(109,40,217,0.12)] ${className}`}
     >
-      {/* Top Border Glow */}
-      <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#22D3EE] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      {/* Top Border Accent */}
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#7C3AED] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
       {/* Radial Mouse Follow Spotlight */}
       <div
         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
         style={{
-          background: `radial-gradient(circle 160px at ${mousePos.x}% ${mousePos.y}%, rgba(168, 85, 247, 0.22), transparent 80%)`,
-          mixBlendMode: 'screen',
+          background: `radial-gradient(circle 180px at ${mousePos.x}% ${mousePos.y}%, rgba(109, 40, 217, 0.08), transparent 80%)`,
         }}
       />
 
-      <div style={{ transform: 'translateZ(30px)' }} className="relative z-20 h-full w-full">
+      <div style={{ transform: 'translateZ(20px)' }} className="relative z-20 h-full w-full">
         {children}
       </div>
     </motion.div>
@@ -221,20 +220,10 @@ interface ServicesProps {
 
 export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
   return (
-    <section id="services" className="py-32 bg-[#080812] relative border-t border-purple-500/20 overflow-hidden">
+    <section id="services" className="py-32 bg-white relative border-t border-[#E9E5F2] overflow-hidden">
       {/* Background ambient lighting */}
-      <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-purple-900/10 blur-[150px] pointer-events-none rounded-full" />
-      <div className="absolute bottom-1/4 right-0 w-[450px] h-[450px] bg-[#22D3EE]/8 blur-[160px] pointer-events-none rounded-full" />
-
-      {/* Decorative AI visual blend */}
-      <div className="absolute right-0 top-0 bottom-0 w-1/2 z-0 pointer-events-none opacity-15 mix-blend-screen overflow-hidden">
-        <img
-          src="/services_ai.png"
-          alt="AI Architecture Graphic"
-          className="object-cover object-right w-full h-full"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#080812] via-[#080812]/70 to-transparent" />
-      </div>
+      <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-[#C084FC]/10 blur-[150px] pointer-events-none rounded-full" />
+      <div className="absolute bottom-1/4 right-0 w-[450px] h-[450px] bg-[#7C3AED]/8 blur-[160px] pointer-events-none rounded-full" />
 
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
         <motion.div
@@ -244,14 +233,17 @@ export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
           transition={{ duration: 0.6 }}
           className="mb-20 text-center"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-[#22D3EE] text-xs font-semibold uppercase tracking-wider mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F2EDFF] border border-[#D8C7FA] text-[#6D28D9] text-xs font-semibold uppercase tracking-wider mb-4 shadow-sm">
             Core Capabilities
           </div>
-          <h2 className="text-[40px] md:text-[56px] font-bold text-white leading-[1.1] mb-6">
+          <h2 className="text-[40px] md:text-[56px] font-bold text-[#111018] leading-[1.1] mb-6">
             What We Build
           </h2>
-          <div className="w-[60px] h-[3px] bg-gradient-to-r from-[#7C3AED] via-[#A855F7] to-[#22D3EE] mx-auto rounded-full shadow-[0_0_12px_rgba(168,85,247,0.8)]" />
-          <p className="mt-6 text-slate-400 max-w-2xl mx-auto text-base md:text-lg">
+          <div
+            className="w-[60px] h-[3.5px] mx-auto rounded-full shadow-[0_2px_8px_rgba(109,40,217,0.3)]"
+            style={{ backgroundImage: 'linear-gradient(135deg, #6D28D9 0%, #9333EA 55%, #C084FC 100%)' }}
+          />
+          <p className="mt-6 text-[#4B4659] max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
             Scalable, production-ready AI systems engineered to integrate directly with your existing software stack and deliver immediate operational impact.
           </p>
         </motion.div>
@@ -273,31 +265,31 @@ export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
                 >
                   <div>
                     <div className="flex items-center justify-between mb-6">
-                      <div className="w-14 h-14 rounded-xl bg-purple-900/30 border border-purple-500/30 flex items-center justify-center group-hover:bg-[#7C3AED]/25 group-hover:border-[#22D3EE]/50 transition-colors">
+                      <div className="w-14 h-14 rounded-xl bg-[#F2EDFF] border border-[#D8C7FA] flex items-center justify-center group-hover:bg-[#6D28D9] transition-colors">
                         <Icon
                           size={24}
-                          className="text-[#22D3EE] group-hover:text-white transition-colors"
+                          className="text-[#6D28D9] group-hover:text-white transition-colors"
                         />
                       </div>
-                      <span className="text-[11px] font-medium font-mono text-purple-300 bg-purple-500/10 border border-purple-500/20 px-2.5 py-1 rounded-full">
+                      <span className="text-[11px] font-semibold font-mono text-[#6D28D9] bg-[#F2EDFF] border border-[#D8C7FA] px-2.5 py-1 rounded-full">
                         {item.badge}
                       </span>
                     </div>
 
-                    <h3 className="text-xl font-bold text-white tracking-wide mb-3 group-hover:text-[#22D3EE] transition-colors">
+                    <h3 className="text-xl font-bold text-[#111018] tracking-wide mb-3 group-hover:text-[#6D28D9] transition-colors">
                       {item.title}
                     </h3>
-                    <p className="text-slate-300 text-sm leading-relaxed">
+                    <p className="text-[#4B4659] text-sm leading-relaxed">
                       {item.description}
                     </p>
                   </div>
 
-                  <div className="mt-6 pt-4 border-t border-purple-500/10 flex items-center justify-between text-xs font-semibold text-purple-300 group-hover:text-[#22D3EE] transition-colors">
+                  <div className="mt-6 pt-4 border-t border-[#E9E5F2] flex items-center justify-between text-xs font-semibold text-[#6D28D9] group-hover:text-[#7C3AED] transition-colors">
                     <span className="flex items-center gap-1.5">
                       <span>Explore Architecture</span>
                       <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                     </span>
-                    <span className="text-[10px] font-mono text-slate-500 group-hover:text-purple-300 transition-colors">
+                    <span className="text-[11px] font-mono text-[#777185] group-hover:text-[#6D28D9] transition-colors">
                       View Specs
                     </span>
                   </div>

@@ -78,7 +78,7 @@ export const DeploymentProcess: React.FC = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="process" className="py-32 bg-[#080812] relative overflow-hidden border-t border-purple-500/20">
+    <section ref={sectionRef} id="process" className="py-32 bg-[#F8F7FC] relative overflow-hidden border-t border-[#E9E5F2]">
       <div className="container mx-auto px-6 max-w-4xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -86,29 +86,36 @@ export const DeploymentProcess: React.FC = () => {
           viewport={{ once: true }}
           className="mb-20 text-center"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-[#22D3EE] text-xs font-semibold uppercase tracking-wider mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F2EDFF] border border-[#D8C7FA] text-[#6D28D9] text-xs font-semibold uppercase tracking-wider mb-4 shadow-sm">
             Deployment Methodology
           </div>
-          <h2 className="text-[40px] md:text-[56px] font-bold text-white leading-[1.1] mb-6">
+          <h2 className="text-[40px] md:text-[56px] font-bold text-[#111018] leading-[1.1] mb-6">
             How We Deploy Your{' '}
-            <span className="bg-gradient-to-r from-[#7C3AED] via-[#A855F7] to-[#22D3EE] bg-clip-text text-transparent">
+            <span
+              className="bg-clip-text text-transparent"
+              style={{ backgroundImage: 'linear-gradient(135deg, #6D28D9 0%, #9333EA 55%, #C084FC 100%)' }}
+            >
               AI System
             </span>
           </h2>
-          <p className="text-slate-400 text-lg max-w-xl mx-auto mb-6">
+          <p className="text-[#4B4659] text-lg max-w-xl mx-auto mb-6 leading-relaxed">
             A battle-tested 4-phase rollout framework designed to deliver production-grade AI systems with zero operational disruption.
           </p>
-          <div className="w-[60px] h-[3px] bg-gradient-to-r from-[#7C3AED] via-[#A855F7] to-[#22D3EE] mx-auto rounded-full shadow-[0_0_12px_rgba(168,85,247,0.8)]" />
+          <div
+            className="w-[60px] h-[3.5px] mx-auto rounded-full shadow-[0_2px_8px_rgba(109,40,217,0.3)]"
+            style={{ backgroundImage: 'linear-gradient(135deg, #6D28D9 0%, #9333EA 55%, #C084FC 100%)' }}
+          />
         </motion.div>
 
         <div className="relative">
           {/* Static Background Vertical Line */}
-          <div className="absolute left-[28px] md:left-1/2 top-0 bottom-0 w-[2px] bg-purple-500/20 -translate-x-1/2 rounded-full" />
+          <div className="absolute left-[28px] md:left-1/2 top-0 bottom-0 w-[2px] bg-[#E9E5F2] -translate-x-1/2 rounded-full" />
 
           {/* GSAP Scrubbed Vertical Laser Line */}
           <div
             ref={lineRef}
-            className="absolute left-[28px] md:left-1/2 top-0 bottom-0 w-[2.5px] bg-gradient-to-b from-[#7C3AED] via-[#A855F7] to-[#22D3EE] -translate-x-1/2 origin-top rounded-full shadow-[0_0_18px_rgba(34,211,238,0.9)] z-0 will-change-transform"
+            className="absolute left-[28px] md:left-1/2 top-0 bottom-0 w-[2.5px] -translate-x-1/2 origin-top rounded-full z-0 will-change-transform shadow-[0_0_12px_rgba(109,40,217,0.5)]"
+            style={{ backgroundImage: 'linear-gradient(to bottom, #6D28D9, #7C3AED, #9333EA)' }}
           />
 
           <div className="space-y-12 md:space-y-20">
@@ -123,8 +130,8 @@ export const DeploymentProcess: React.FC = () => {
                   } pl-16 md:pl-0 will-change-transform`}
                 >
                   {/* Step Number Circle */}
-                  <div className="absolute left-[28px] md:left-1/2 w-14 h-14 bg-[#151529] border-2 border-purple-500/40 rounded-full flex items-center justify-center -translate-x-1/2 z-10 shadow-[0_0_20px_rgba(124,58,237,0.4)] group hover:border-[#22D3EE] transition-all">
-                    <div className="w-10 h-10 bg-[#080812] rounded-full flex items-center justify-center text-[#22D3EE] font-mono text-sm font-bold group-hover:text-white transition-colors">
+                  <div className="absolute left-[28px] md:left-1/2 w-14 h-14 bg-white border-2 border-[#D8C7FA] rounded-full flex items-center justify-center -translate-x-1/2 z-10 shadow-[0_4px_16px_rgba(109,40,217,0.12)] group hover:border-[#6D28D9] transition-all">
+                    <div className="w-10 h-10 bg-[#F2EDFF] rounded-full flex items-center justify-center text-[#6D28D9] font-mono text-sm font-bold group-hover:bg-[#6D28D9] group-hover:text-white transition-colors">
                       {phase.step}
                     </div>
                   </div>
@@ -135,15 +142,14 @@ export const DeploymentProcess: React.FC = () => {
                       isEven ? 'md:pl-16' : 'md:pr-16 text-left md:text-right'
                     } w-full`}
                   >
-                    <div className="bg-[#151529]/80 border border-purple-500/20 p-7 rounded-2xl hover:bg-[#151529] hover:border-purple-400/50 hover:shadow-[0_0_25px_rgba(168,85,247,0.15)] transition-all relative group overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-r from-purple-600/10 to-[#22D3EE]/10 opacity-0 group-hover:opacity-100 transition-opacity blur-xl pointer-events-none" />
-                      <div className="text-xs font-mono font-bold text-[#22D3EE] uppercase tracking-wider mb-1">
+                    <div className="bg-white border border-[#E9E5F2] p-7 rounded-2xl hover:border-[#D8C7FA] hover:shadow-[0_12px_32px_rgba(109,40,217,0.1)] transition-all relative group overflow-hidden shadow-sm">
+                      <div className="text-xs font-mono font-bold text-[#6D28D9] uppercase tracking-wider mb-1">
                         Phase {phase.step}
                       </div>
-                      <h3 className="text-xl font-bold text-white mb-2">
+                      <h3 className="text-xl font-bold text-[#111018] mb-2">
                         {phase.title}
                       </h3>
-                      <p className="text-slate-400 text-sm leading-relaxed">
+                      <p className="text-[#4B4659] text-sm leading-relaxed">
                         {phase.description}
                       </p>
                     </div>

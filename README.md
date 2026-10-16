@@ -135,7 +135,7 @@ Included directly in the homepage ([`InteractiveDemos.tsx`](src/components/Inter
 - **Styling & UI:**
   - [Tailwind CSS 3.4](https://tailwindcss.com/)
   - [Lucide React](https://lucide.dev/) (Icons)
-  - Custom Dark Palette: `#080812` (Background), `#151529` (Cards), `#7C3AED` (Primary Violet), `#22D3EE` (Cyan Accent)
+  - **RESH AI Light Theme Design System:** `#FFFFFF` (Page Background), `#F8F7FC` (Alternate Sections), `#F2EDFF` (Soft Purple Highlights), `#111018` (Primary Headings), `#4B4659` (Body), `#6D28D9` / `#7C3AED` / `#9333EA` / `#C084FC` (Brand Purple Gradients), `#E9E5F2` / `#D8C7FA` (Refined Borders)
 
 ---
 

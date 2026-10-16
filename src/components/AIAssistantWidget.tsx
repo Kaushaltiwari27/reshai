@@ -175,7 +175,7 @@ export const AIAssistantWidget: React.FC<AIAssistantWidgetProps> = ({ onOpenBook
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-tr from-[#7C3AED] to-[#A855F7] text-white shadow-[0_0_30px_rgba(168,85,247,0.5)] flex items-center justify-center transition-all group cursor-pointer border border-purple-400/40"
+        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-tr from-[#6D28D9] via-[#7C3AED] to-[#9333EA] text-white shadow-[0_6px_25px_rgba(109,40,217,0.45)] flex items-center justify-center transition-all group cursor-pointer border border-[#D8C7FA]"
         aria-label="Toggle RESH AI Assistant"
       >
         <div className="absolute inset-0 rounded-full bg-[#7C3AED] animate-ping opacity-25 pointer-events-none" />
@@ -190,28 +190,28 @@ export const AIAssistantWidget: React.FC<AIAssistantWidgetProps> = ({ onOpenBook
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.25 }}
-            className="fixed bottom-24 right-6 z-50 w-[380px] max-w-[calc(100vw-36px)] h-[560px] max-h-[calc(100vh-120px)] bg-[#080812]/95 border border-purple-500/30 rounded-3xl shadow-2xl flex flex-col overflow-hidden backdrop-blur-2xl shadow-purple-950/40"
+            className="fixed bottom-24 right-6 z-50 w-[380px] max-w-[calc(100vw-36px)] h-[560px] max-h-[calc(100vh-120px)] bg-white/95 border border-[#E9E5F2] rounded-3xl shadow-[0_20px_50px_rgba(109,40,217,0.16)] flex flex-col overflow-hidden backdrop-blur-2xl"
           >
             {/* Header */}
-            <div className="p-4 px-5 border-b border-purple-500/20 flex items-center justify-between bg-[#151529]/80">
+            <div className="p-4 px-5 border-b border-[#E9E5F2] flex items-center justify-between bg-[#F8F7FC]">
               <div className="flex items-center gap-3">
                 <div className="relative">
-                  <div className="w-10 h-10 rounded-full bg-purple-900/30 border border-purple-500/40 flex items-center justify-center p-1.5">
+                  <div className="w-10 h-10 rounded-full bg-white border border-[#D8C7FA] flex items-center justify-center p-1.5 shadow-sm">
                     <img src="/resh-logo.png" alt="RESH AI" className="w-full h-full object-contain" />
                   </div>
-                  <div className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-[#22D3EE] border-2 border-[#080812] animate-pulse" />
+                  <div className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 border-2 border-white animate-pulse" />
                 </div>
                 <div>
-                  <h4 className="text-white font-bold text-sm leading-tight flex items-center gap-1.5">
+                  <h4 className="text-[#111018] font-bold text-sm leading-tight flex items-center gap-1.5">
                     <span>RESH AI</span>
-                    <span className="text-[10px] text-[#22D3EE] font-mono px-1.5 py-0.2 bg-cyan-950/40 border border-cyan-500/30 rounded-full">Assistant</span>
+                    <span className="text-[10px] text-[#6D28D9] font-mono px-1.5 py-0.2 bg-[#F2EDFF] border border-[#D8C7FA] rounded-full font-semibold">Assistant</span>
                   </h4>
-                  <p className="text-slate-400 text-[11px]">Sub-800ms Autonomous Systems</p>
+                  <p className="text-[#777185] text-[11px]">Sub-800ms Autonomous Systems</p>
                 </div>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="w-8 h-8 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-purple-900/20 transition-colors cursor-pointer"
+                className="w-8 h-8 rounded-full flex items-center justify-center text-[#777185] hover:text-[#111018] hover:bg-[#F2EDFF] transition-colors cursor-pointer"
               >
                 <X size={18} />
               </button>
@@ -227,8 +227,8 @@ export const AIAssistantWidget: React.FC<AIAssistantWidgetProps> = ({ onOpenBook
                   <div
                     className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${
                       msg.sender === 'user'
-                        ? 'bg-gradient-to-r from-[#7C3AED] to-[#A855F7] text-white font-medium rounded-br-none shadow-md shadow-purple-950/30'
-                        : 'bg-[#151529] border border-purple-500/25 text-slate-200 rounded-bl-none'
+                        ? 'bg-gradient-to-r from-[#6D28D9] to-[#9333EA] text-white font-medium rounded-br-none shadow-sm'
+                        : 'bg-[#F8F7FC] border border-[#E9E5F2] text-[#111018] rounded-bl-none'
                     }`}
                   >
                     {msg.text}
@@ -241,10 +241,10 @@ export const AIAssistantWidget: React.FC<AIAssistantWidgetProps> = ({ onOpenBook
                         <button
                           key={opt.label}
                           onClick={() => handleOptionClick(opt)}
-                          className="text-xs px-3 py-1.5 rounded-full bg-[#151529] border border-purple-500/30 text-purple-200 hover:bg-[#7C3AED] hover:text-white hover:border-purple-400 transition-all flex items-center gap-1 font-medium cursor-pointer"
+                          className="text-xs px-3 py-1.5 rounded-full bg-white border border-[#D8C7FA] text-[#6D28D9] hover:bg-[#6D28D9] hover:text-white transition-all flex items-center gap-1 font-semibold cursor-pointer shadow-xs"
                         >
                           <span>{opt.label}</span>
-                          {opt.url && <ExternalLink size={10} className="text-[#22D3EE]" />}
+                          {opt.url && <ExternalLink size={10} className="text-[#7C3AED]" />}
                         </button>
                       ))}
                     </div>
@@ -254,24 +254,24 @@ export const AIAssistantWidget: React.FC<AIAssistantWidgetProps> = ({ onOpenBook
 
               {/* Typing Indicator */}
               {isTyping && (
-                <div className="flex items-center gap-1.5 p-3 px-4 bg-[#151529] border border-purple-500/25 rounded-2xl rounded-bl-none w-max">
-                  <div className="w-2 h-2 rounded-full bg-[#7C3AED] animate-bounce" />
-                  <div className="w-2 h-2 rounded-full bg-[#A855F7] animate-bounce [animation-delay:0.2s]" />
-                  <div className="w-2 h-2 rounded-full bg-[#22D3EE] animate-bounce [animation-delay:0.4s]" />
+                <div className="flex items-center gap-1.5 p-3 px-4 bg-[#F8F7FC] border border-[#E9E5F2] rounded-2xl rounded-bl-none w-max">
+                  <div className="w-2 h-2 rounded-full bg-[#6D28D9] animate-bounce" />
+                  <div className="w-2 h-2 rounded-full bg-[#7C3AED] animate-bounce [animation-delay:0.2s]" />
+                  <div className="w-2 h-2 rounded-full bg-[#9333EA] animate-bounce [animation-delay:0.4s]" />
                 </div>
               )}
               <div ref={messagesEndRef} />
             </div>
 
             {/* Input Footer */}
-            <div className="p-3 border-t border-purple-500/20 bg-[#080812] flex items-center gap-2">
+            <div className="p-3 border-t border-[#E9E5F2] bg-[#F8F7FC] flex items-center gap-2">
               <input
                 type="text"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSend()}
                 placeholder={isRecording ? 'Listening...' : 'Ask about AI agents & workflows...'}
-                className="flex-1 bg-[#151529] border border-purple-500/25 rounded-full px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[#22D3EE] transition-colors"
+                className="flex-1 bg-white border border-[#E9E5F2] rounded-full px-4 py-2.5 text-sm text-[#111018] placeholder-[#777185] focus:outline-none focus:border-[#6D28D9] transition-colors"
               />
 
               {/* Mic / Speech Button */}
@@ -280,7 +280,7 @@ export const AIAssistantWidget: React.FC<AIAssistantWidgetProps> = ({ onOpenBook
                 className={`p-2.5 rounded-full transition-all cursor-pointer ${
                   isRecording
                     ? 'bg-rose-500 text-white animate-pulse'
-                    : 'bg-[#151529] text-slate-400 hover:text-white hover:bg-purple-900/30 border border-purple-500/20'
+                    : 'bg-white text-[#777185] hover:text-[#111018] hover:bg-[#F2EDFF] border border-[#E9E5F2]'
                 }`}
                 title="Voice input"
               >
@@ -291,7 +291,7 @@ export const AIAssistantWidget: React.FC<AIAssistantWidgetProps> = ({ onOpenBook
               <button
                 onClick={() => handleSend()}
                 disabled={!inputValue.trim()}
-                className="p-2.5 rounded-full bg-gradient-to-r from-[#7C3AED] to-[#A855F7] text-white hover:shadow-[0_0_15px_rgba(168,85,247,0.5)] transition-all disabled:opacity-30 cursor-pointer"
+                className="p-2.5 rounded-full bg-gradient-to-r from-[#6D28D9] to-[#9333EA] text-white hover:shadow-[0_4px_16px_rgba(109,40,217,0.4)] transition-all disabled:opacity-30 cursor-pointer"
               >
                 <Send size={16} />
               </button>

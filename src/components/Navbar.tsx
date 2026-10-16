@@ -13,13 +13,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSearch, onOpenBooking }) =
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 30) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 30);
     };
-
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -87,25 +82,25 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSearch, onOpenBooking }) =
       <header
         className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 border-b px-6 md:px-[80px] lg:px-[120px] ${
           isScrolled
-            ? 'bg-[#080812]/90 backdrop-blur-xl border-purple-500/20 py-3.5 shadow-2xl shadow-purple-950/20'
-            : 'bg-transparent py-5 md:py-6 border-transparent'
+            ? 'bg-white/95 backdrop-blur-xl border-[#E9E5F2] py-3.5 shadow-[0_4px_24px_rgba(109,40,217,0.07)]'
+            : 'bg-white/80 backdrop-blur-md py-5 md:py-6 border-transparent'
         }`}
       >
         <div className="flex items-center justify-between max-w-7xl mx-auto">
-          {/* Logo and Nav */}
+          {/* Logo */}
           <div className="flex items-center gap-[48px] lg:gap-[64px]">
             <a
-              className="flex items-center gap-3 text-white font-general font-bold text-xl tracking-wide shrink-0 z-50 group"
+              className="flex items-center gap-3 font-general font-bold text-xl tracking-wide shrink-0 z-50 group"
               href="/"
             >
               <img
                 src="/resh-logo.png"
                 alt="RESH AI"
-                className="w-9 h-9 object-contain drop-shadow-[0_0_12px_rgba(168,85,247,0.5)] group-hover:scale-105 transition-transform"
+                className="w-9 h-9 object-contain group-hover:scale-105 transition-transform"
               />
-              <span className="text-xl tracking-wider font-extrabold flex items-center">
+              <span className="text-xl tracking-wider font-extrabold flex items-center text-[#111018]">
                 <span>RESH</span>
-                <span className="text-[#22D3EE] ml-1.5">AI</span>
+                <span className="text-[#7C3AED] ml-1.5">AI</span>
               </span>
             </a>
 
@@ -114,32 +109,32 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSearch, onOpenBooking }) =
               {navLinks.map((link) => (
                 <div key={link.name} className="relative group">
                   <a
-                    className="flex items-center gap-1.5 text-[14px] font-medium text-slate-300 hover:text-white transition-colors py-3"
+                    className="flex items-center gap-1.5 text-[14px] font-medium text-[#4B4659] hover:text-[#6D28D9] transition-colors py-3"
                     href={link.href}
                   >
                     <span>{link.name}</span>
                     {link.hasDropdown && (
                       <ChevronDown
                         size={14}
-                        className="transition-transform duration-300 text-slate-400 group-hover:rotate-180 group-hover:text-[#22D3EE]"
+                        className="transition-transform duration-300 text-[#777185] group-hover:rotate-180 group-hover:text-[#7C3AED]"
                       />
                     )}
                   </a>
 
                   {/* Dropdown Menu */}
                   {link.hasDropdown && (
-                    <div className="absolute top-full left-0 w-64 bg-[#151529]/95 border border-purple-500/20 backdrop-blur-xl rounded-2xl p-2.5 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 pointer-events-none group-hover:pointer-events-auto">
+                    <div className="absolute top-full left-0 w-64 bg-white border border-[#E9E5F2] rounded-2xl p-2.5 shadow-[0_16px_40px_rgba(109,40,217,0.12)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 pointer-events-none group-hover:pointer-events-auto">
                       <div className="flex flex-col gap-1">
                         {link.subItems.map((sub) => (
                           <a
                             key={sub.title}
                             href={sub.href}
-                            className="flex items-center justify-between px-3 py-2 rounded-xl text-xs font-medium text-slate-300 hover:text-white hover:bg-purple-600/15 hover:border-purple-500/20 border border-transparent transition-all group/item"
+                            className="flex items-center justify-between px-3 py-2 rounded-xl text-xs font-medium text-[#4B4659] hover:text-[#6D28D9] hover:bg-[#F2EDFF] border border-transparent transition-all group/item"
                           >
                             <span>{sub.title}</span>
                             <ArrowUpRight
                               size={12}
-                              className="opacity-0 group-hover/item:opacity-100 group-hover/item:text-[#22D3EE] transition-opacity"
+                              className="opacity-0 group-hover/item:opacity-100 group-hover/item:text-[#7C3AED] transition-opacity"
                             />
                           </a>
                         ))}
@@ -157,37 +152,30 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSearch, onOpenBooking }) =
             <Magnetic>
               <button
                 onClick={onOpenSearch}
-                className="w-10 h-10 rounded-full flex items-center justify-center text-slate-400 hover:text-[#22D3EE] hover:bg-purple-500/10 border border-transparent hover:border-purple-500/20 transition-all group"
+                className="w-10 h-10 rounded-full flex items-center justify-center text-[#777185] hover:text-[#6D28D9] hover:bg-[#F2EDFF] border border-transparent hover:border-[#D8C7FA] transition-all group"
                 aria-label="Search"
               >
-                <Search
-                  size={17}
-                  className="group-hover:scale-110 transition-transform"
-                />
+                <Search size={17} className="group-hover:scale-110 transition-transform" />
               </button>
             </Magnetic>
 
-            {/* Book Strategy Call CTA Button */}
+            {/* Book Strategy Call CTA */}
             <Magnetic>
               <button
                 type="button"
                 onClick={handleBookClick}
-                className="relative inline-flex items-center justify-center p-[1px] rounded-full overflow-hidden group bg-gradient-to-r from-[#7C3AED] via-[#A855F7] to-[#22D3EE] transition-all hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] hover:scale-[1.02] active:scale-95"
+                className="relative inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-[#6D28D9] via-[#7C3AED] to-[#9333EA] text-white text-[13px] font-semibold tracking-wide shadow-[0_4px_20px_rgba(109,40,217,0.30)] hover:shadow-[0_6px_28px_rgba(109,40,217,0.45)] hover:scale-[1.02] active:scale-95 transition-all"
               >
-                <div className="relative bg-[#080812] rounded-full px-5 py-2.5 h-full w-full flex items-center justify-center transition-colors group-hover:bg-[#101020]">
-                  <span className="text-white text-[13px] font-semibold tracking-wide flex items-center gap-1.5">
-                    <span>Book Strategy Call</span>
-                    <ArrowUpRight size={14} className="text-[#22D3EE] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                  </span>
-                </div>
+                <span>Book Strategy Call</span>
+                <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </button>
             </Magnetic>
           </div>
 
-          {/* Mobile Hamburger Button */}
+          {/* Mobile Hamburger */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-white z-[110] relative p-2"
+            className="md:hidden text-[#111018] z-[110] relative p-2"
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
@@ -197,17 +185,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSearch, onOpenBooking }) =
 
       {/* Mobile Drawer */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-[95] bg-[#080812]/98 backdrop-blur-2xl flex flex-col pt-24 px-8 md:hidden transition-all duration-300">
+        <div className="fixed inset-0 z-[95] bg-white flex flex-col pt-24 px-8 md:hidden transition-all duration-300 border-r border-[#E9E5F2]">
           <nav className="flex flex-col gap-5 text-lg">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-slate-200 hover:text-white transition-colors py-2 border-b border-purple-500/10 font-medium flex items-center justify-between"
+                className="text-[#4B4659] hover:text-[#6D28D9] transition-colors py-2 border-b border-[#E9E5F2] font-medium flex items-center justify-between"
               >
                 <span>{link.name}</span>
-                <ArrowUpRight size={18} className="text-[#22D3EE]" />
+                <ArrowUpRight size={18} className="text-[#7C3AED]" />
               </a>
             ))}
           </nav>
@@ -218,7 +206,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSearch, onOpenBooking }) =
                 setIsMobileMenuOpen(false);
                 onOpenSearch();
               }}
-              className="w-full py-3 px-6 rounded-full border border-purple-500/20 text-slate-300 flex items-center justify-center gap-2 hover:bg-purple-900/20"
+              className="w-full py-3 px-6 rounded-full border border-[#E9E5F2] text-[#4B4659] flex items-center justify-center gap-2 hover:bg-[#F2EDFF] hover:border-[#D8C7FA] transition-all"
             >
               <Search size={16} />
               <span>Search Website</span>
@@ -230,7 +218,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSearch, onOpenBooking }) =
                 setIsMobileMenuOpen(false);
                 handleBookClick();
               }}
-              className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#7C3AED] to-[#A855F7] text-white font-semibold text-center shadow-lg shadow-purple-900/40"
+              className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#6D28D9] to-[#9333EA] text-white font-semibold text-center shadow-lg shadow-purple-200"
             >
               Book Strategy Call
             </button>

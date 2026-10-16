@@ -145,7 +145,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-[#080812]/85 backdrop-blur-md"
+            className="fixed inset-0 bg-slate-900/40 backdrop-blur-md"
           />
 
           {/* Modal Container */}
@@ -154,28 +154,28 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="relative w-full max-w-2xl bg-[#151529] border border-purple-500/30 rounded-2xl shadow-2xl overflow-hidden z-10 shadow-purple-950/40"
+            className="relative w-full max-w-2xl bg-white border border-[#E9E5F2] rounded-2xl shadow-[0_24px_60px_rgba(109,40,217,0.18)] overflow-hidden z-10"
           >
             {/* Search Input Bar */}
-            <div className="flex items-center px-6 py-4 border-b border-purple-500/20 bg-[#080812]">
-              <Search size={20} className="text-[#22D3EE] mr-3 shrink-0" />
+            <div className="flex items-center px-6 py-4 border-b border-[#E9E5F2] bg-[#F8F7FC]">
+              <Search size={20} className="text-[#6D28D9] mr-3 shrink-0" />
               <input
                 ref={inputRef}
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search RESH AI solutions, architecture, pricing, FAQs..."
-                className="w-full bg-transparent text-white placeholder-slate-500 text-base outline-none"
+                className="w-full bg-transparent text-[#111018] placeholder-[#777185] text-base outline-none font-medium"
               />
               {query ? (
                 <button
                   onClick={() => setQuery('')}
-                  className="text-slate-400 hover:text-white p-1 cursor-pointer"
+                  className="text-[#777185] hover:text-[#111018] p-1 cursor-pointer"
                 >
                   <X size={18} />
                 </button>
               ) : (
-                <kbd className="hidden sm:inline-block px-2 py-0.5 text-xs text-slate-400 bg-purple-950/40 border border-purple-500/20 rounded font-mono">
+                <kbd className="hidden sm:inline-block px-2 py-0.5 text-xs text-[#777185] bg-white border border-[#E9E5F2] rounded font-mono shadow-xs">
                   ESC
                 </kbd>
               )}
@@ -189,38 +189,38 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
                     key={result.title}
                     href={result.href}
                     onClick={onClose}
-                    className="flex items-center justify-between p-3.5 rounded-xl hover:bg-purple-900/20 border border-transparent hover:border-purple-500/20 transition-all group"
+                    className="flex items-center justify-between p-3.5 rounded-xl hover:bg-[#F2EDFF] border border-transparent hover:border-[#D8C7FA] transition-all group"
                   >
                     <div>
                       <div className="flex items-center gap-2 mb-1">
-                        <span className="text-white font-medium text-sm group-hover:text-[#22D3EE] transition-colors">
+                        <span className="text-[#111018] font-bold text-sm group-hover:text-[#6D28D9] transition-colors">
                           {result.title}
                         </span>
-                        <span className="text-[10px] px-2 py-0.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 font-mono">
+                        <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#F2EDFF] border border-[#D8C7FA] text-[#6D28D9] font-mono font-semibold">
                           {result.category}
                         </span>
                       </div>
-                      <p className="text-xs text-slate-400">{result.desc}</p>
+                      <p className="text-xs text-[#4B4659]">{result.desc}</p>
                     </div>
                     <ArrowRight
                       size={16}
-                      className="text-slate-500 group-hover:text-[#22D3EE] group-hover:translate-x-1 transition-all shrink-0 ml-4"
+                      className="text-[#777185] group-hover:text-[#6D28D9] group-hover:translate-x-1 transition-all shrink-0 ml-4"
                     />
                   </a>
                 ))
               ) : (
-                <div className="py-12 text-center text-slate-500 text-sm">
+                <div className="py-12 text-center text-[#777185] text-sm">
                   No matching results for "{query}"
                 </div>
               )}
             </div>
 
             {/* Modal Footer */}
-            <div className="px-6 py-3 bg-[#080812] border-t border-purple-500/20 flex items-center justify-between text-xs text-slate-400">
-              <span className="font-mono text-[11px]">RESH AI Universal Search</span>
+            <div className="px-6 py-3 bg-[#F8F7FC] border-t border-[#E9E5F2] flex items-center justify-between text-xs text-[#777185]">
+              <span className="font-mono text-[11px] font-medium">RESH AI Universal Search</span>
               <span className="flex items-center gap-1 font-mono text-[11px]">
                 <span>Select</span>
-                <CornerDownLeft size={12} className="text-[#22D3EE]" />
+                <CornerDownLeft size={12} className="text-[#6D28D9]" />
               </span>
             </div>
           </motion.div>

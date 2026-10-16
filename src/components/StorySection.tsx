@@ -111,7 +111,7 @@ export const StorySection: React.FC = () => {
     <section
       ref={sectionRef}
       aria-label="Our story"
-      className="relative w-full h-auto py-24 md:py-0 md:h-screen flex items-center justify-center bg-[#080812] border-t border-b border-purple-500/20 overflow-hidden"
+      className="relative w-full h-auto py-24 md:py-0 md:h-screen flex items-center justify-center bg-white border-t border-b border-[#E9E5F2] overflow-hidden"
     >
       {/* Background Radial Glow */}
       <div
@@ -124,11 +124,11 @@ export const StorySection: React.FC = () => {
           transform: 'translate(-50%, -50%)',
           width: '900px',
           height: '320px',
-          background: 'radial-gradient(ellipse at center, rgba(124,58,237,0.15) 0%, rgba(34,211,238,0.05) 40%, transparent 70%)',
+          background: 'radial-gradient(ellipse at center, rgba(109,40,217,0.08) 0%, rgba(192,132,252,0.04) 40%, transparent 70%)',
         }}
       />
 
-      {/* Side Fade Gradients for cinematic edge mask */}
+      {/* Side Fade Gradients for clean edge mask */}
       <div
         aria-hidden="true"
         style={{
@@ -136,7 +136,7 @@ export const StorySection: React.FC = () => {
           inset: 0,
           zIndex: 10,
           pointerEvents: 'none',
-          background: 'linear-gradient(to right, #080812 0%, transparent 8%, transparent 92%, #080812 100%)',
+          background: 'linear-gradient(to right, #FFFFFF 0%, transparent 8%, transparent 92%, #FFFFFF 100%)',
         }}
         className="hidden md:block"
       />
@@ -154,12 +154,12 @@ export const StorySection: React.FC = () => {
           fontWeight: 600,
           letterSpacing: '0.35em',
           textTransform: 'uppercase',
-          color: 'rgba(168,85,247,0.7)',
+          color: '#7C3AED',
           whiteSpace: 'nowrap',
         }}
         className="flex items-center gap-2 font-mono"
       >
-        <span className="w-1.5 h-1.5 rounded-full bg-[#22D3EE] animate-pulse" />
+        <span className="w-1.5 h-1.5 rounded-full bg-[#7C3AED] animate-pulse" />
         <span>RESH AI Architecture — scroll to explore</span>
       </p>
 
@@ -169,7 +169,7 @@ export const StorySection: React.FC = () => {
         style={{ userSelect: 'none' }}
         className="relative flex flex-wrap md:flex-nowrap items-center justify-center md:justify-start h-auto md:h-full max-w-none px-6 md:pl-[max(8vw,60px)] md:pr-[max(15vw,100px)] gap-x-4 gap-y-6 md:gap-0 whitespace-normal md:whitespace-nowrap will-change-transform z-10"
       >
-        <span className="story-item text-center md:text-left whitespace-nowrap text-[clamp(2.2rem,6vw,5.5rem)] font-[650] tracking-[-0.025em] leading-[1.1] text-white drop-shadow-[0_0_80px_rgba(168,85,247,0.25)]">
+        <span className="story-item text-center md:text-left whitespace-nowrap text-[clamp(2.2rem,6vw,5.5rem)] font-[650] tracking-[-0.025em] leading-[1.1] text-[#111018]">
           Engineering
         </span>
 
@@ -183,12 +183,12 @@ export const StorySection: React.FC = () => {
         >
           <svg width="110" height="36" viewBox="0 0 100 32" fill="none" className="inline-block align-middle shrink-0">
             <path d="M0 16 C25 4, 45 28, 70 16 S90 4, 100 16" stroke="url(#fa-g-resh)" strokeWidth="1.6" fill="none" strokeLinecap="round" />
-            <path d="M88 10 L100 16 L88 22" stroke="#22D3EE" strokeWidth="1.6" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M88 10 L100 16 L88 22" stroke="#7C3AED" strokeWidth="1.6" fill="none" strokeLinecap="round" strokeLinejoin="round" />
             <defs>
               <linearGradient id="fa-g-resh" x1="0" y1="0" x2="100" y2="0" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stopColor="#7C3AED" stopOpacity="0.2" />
-                <stop offset="50%" stopColor="#A855F7" stopOpacity="1" />
-                <stop offset="100%" stopColor="#22D3EE" stopOpacity="0.8" />
+                <stop offset="0%" stopColor="#C084FC" stopOpacity="0.4" />
+                <stop offset="50%" stopColor="#7C3AED" stopOpacity="1" />
+                <stop offset="100%" stopColor="#6D28D9" stopOpacity="0.8" />
               </linearGradient>
             </defs>
           </svg>
@@ -196,19 +196,19 @@ export const StorySection: React.FC = () => {
 
         <div className="hidden md:block shrink-0 w-10" aria-hidden="true" />
 
-        <span className="story-item text-center md:text-left whitespace-nowrap text-[clamp(2.2rem,6vw,5.5rem)] font-light tracking-[-0.025em] leading-[1.1] text-slate-400">
+        <span className="story-item text-center md:text-left whitespace-nowrap text-[clamp(2.2rem,6vw,5.5rem)] font-light tracking-[-0.025em] leading-[1.1] text-[#777185]">
           intelligent
         </span>
 
         <div className="hidden md:block shrink-0 w-6" aria-hidden="true" />
 
-        <span className="story-item text-center md:text-left whitespace-nowrap text-[clamp(2.2rem,6vw,5.5rem)] font-[650] tracking-[-0.025em] leading-[1.1] text-white drop-shadow-[0_0_80px_rgba(168,85,247,0.25)]">
+        <span className="story-item text-center md:text-left whitespace-nowrap text-[clamp(2.2rem,6vw,5.5rem)] font-[650] tracking-[-0.025em] leading-[1.1] text-[#111018]">
           autonomous
         </span>
 
         <div className="hidden md:block shrink-0 w-6" aria-hidden="true" />
 
-        <span className="story-item text-center md:text-left whitespace-nowrap text-[clamp(2.2rem,6vw,5.5rem)] font-[650] tracking-[-0.025em] leading-[1.1] text-white drop-shadow-[0_0_80px_rgba(168,85,247,0.25)]">
+        <span className="story-item text-center md:text-left whitespace-nowrap text-[clamp(2.2rem,6vw,5.5rem)] font-[650] tracking-[-0.025em] leading-[1.1] text-[#111018]">
           systems
         </span>
 
@@ -221,15 +221,15 @@ export const StorySection: React.FC = () => {
           aria-hidden="true"
         >
           <svg width="34" height="34" viewBox="0 0 30 30" fill="none" className="inline-block align-middle shrink-0">
-            <circle cx="15" cy="15" r="3.5" fill="#22D3EE" />
-            <circle cx="15" cy="15" r="7.5" fill="#22D3EE" fillOpacity="0.25" />
-            <circle cx="15" cy="15" r="14.5" fill="#7C3AED" fillOpacity="0.15" />
+            <circle cx="15" cy="15" r="3.5" fill="#7C3AED" />
+            <circle cx="15" cy="15" r="7.5" fill="#7C3AED" fillOpacity="0.25" />
+            <circle cx="15" cy="15" r="14.5" fill="#9333EA" fillOpacity="0.12" />
           </svg>
         </span>
 
         <div className="hidden md:block shrink-0 w-14" aria-hidden="true" />
 
-        <span className="story-item text-center md:text-left whitespace-nowrap text-[clamp(2.2rem,6vw,5.5rem)] font-light tracking-[-0.025em] leading-[1.1] text-slate-400">
+        <span className="story-item text-center md:text-left whitespace-nowrap text-[clamp(2.2rem,6vw,5.5rem)] font-light tracking-[-0.025em] leading-[1.1] text-[#777185]">
           powered by
         </span>
 
@@ -242,17 +242,17 @@ export const StorySection: React.FC = () => {
           aria-hidden="true"
         >
           <svg width="56" height="56" viewBox="0 0 52 52" fill="none" className="inline-block align-middle shrink-0">
-            <line x1="26" y1="6" x2="6" y2="26" stroke="#A855F7" strokeOpacity="0.4" strokeWidth="1" />
-            <line x1="26" y1="6" x2="46" y2="26" stroke="#22D3EE" strokeOpacity="0.4" strokeWidth="1" />
-            <line x1="6" y1="26" x2="26" y2="46" stroke="#7C3AED" strokeOpacity="0.4" strokeWidth="1" />
-            <line x1="46" y1="26" x2="26" y2="46" stroke="#A855F7" strokeOpacity="0.4" strokeWidth="1" />
-            <line x1="6" y1="26" x2="46" y2="26" stroke="#22D3EE" strokeOpacity="0.3" strokeWidth="1" />
-            <circle cx="26" cy="6" r="2.8" fill="#7C3AED" fillOpacity="0.95" />
-            <circle cx="6" cy="26" r="2.8" fill="#A855F7" fillOpacity="0.95" />
-            <circle cx="46" cy="26" r="2.8" fill="#22D3EE" fillOpacity="0.95" />
-            <circle cx="26" cy="46" r="2.8" fill="#7C3AED" fillOpacity="0.95" />
-            <circle cx="26" cy="26" r="5.5" fill="#A855F7" fillOpacity="0.2" />
-            <circle cx="26" cy="26" r="2.2" fill="#22D3EE" />
+            <line x1="26" y1="6" x2="6" y2="26" stroke="#9333EA" strokeOpacity="0.4" strokeWidth="1" />
+            <line x1="26" y1="6" x2="46" y2="26" stroke="#7C3AED" strokeOpacity="0.4" strokeWidth="1" />
+            <line x1="6" y1="26" x2="26" y2="46" stroke="#6D28D9" strokeOpacity="0.4" strokeWidth="1" />
+            <line x1="46" y1="26" x2="26" y2="46" stroke="#9333EA" strokeOpacity="0.4" strokeWidth="1" />
+            <line x1="6" y1="26" x2="46" y2="26" stroke="#7C3AED" strokeOpacity="0.3" strokeWidth="1" />
+            <circle cx="26" cy="6" r="2.8" fill="#6D28D9" fillOpacity="0.95" />
+            <circle cx="6" cy="26" r="2.8" fill="#9333EA" fillOpacity="0.95" />
+            <circle cx="46" cy="26" r="2.8" fill="#7C3AED" fillOpacity="0.95" />
+            <circle cx="26" cy="46" r="2.8" fill="#6D28D9" fillOpacity="0.95" />
+            <circle cx="26" cy="26" r="5.5" fill="#9333EA" fillOpacity="0.2" />
+            <circle cx="26" cy="26" r="2.2" fill="#7C3AED" />
           </svg>
         </span>
 
@@ -260,11 +260,9 @@ export const StorySection: React.FC = () => {
 
         {/* Gradient AI */}
         <span
-          className="story-item text-center md:text-left whitespace-nowrap text-[clamp(2.2rem,6vw,5.5rem)] font-extrabold tracking-[-0.025em] leading-[1.1]"
+          className="story-item text-center md:text-left whitespace-nowrap text-[clamp(2.2rem,6vw,5.5rem)] font-extrabold tracking-[-0.025em] leading-[1.1] bg-clip-text text-transparent"
           style={{
-            background: 'linear-gradient(90deg, #7C3AED, #A855F7, #22D3EE)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
+            backgroundImage: 'linear-gradient(135deg, #6D28D9 0%, #9333EA 55%, #C084FC 100%)',
           }}
         >
           AI
@@ -279,15 +277,15 @@ export const StorySection: React.FC = () => {
           aria-hidden="true"
         >
           <svg width="52" height="30" viewBox="0 0 48 28" fill="none" className="inline-block align-middle shrink-0">
-            <line x1="0" y1="7" x2="38" y2="7" stroke="#7C3AED" strokeWidth="1.5" strokeLinecap="round" strokeOpacity="0.8" />
-            <line x1="0" y1="14" x2="48" y2="14" stroke="#22D3EE" strokeWidth="1" strokeLinecap="round" strokeOpacity="0.6" />
-            <line x1="0" y1="21" x2="30" y2="21" stroke="#A855F7" strokeWidth="1.5" strokeLinecap="round" strokeOpacity="0.8" />
+            <line x1="0" y1="7" x2="38" y2="7" stroke="#6D28D9" strokeWidth="1.5" strokeLinecap="round" strokeOpacity="0.8" />
+            <line x1="0" y1="14" x2="48" y2="14" stroke="#7C3AED" strokeWidth="1" strokeLinecap="round" strokeOpacity="0.6" />
+            <line x1="0" y1="21" x2="30" y2="21" stroke="#9333EA" strokeWidth="1.5" strokeLinecap="round" strokeOpacity="0.8" />
           </svg>
         </span>
 
         <div className="hidden md:block shrink-0 w-12" aria-hidden="true" />
 
-        <span className="story-item text-center md:text-left whitespace-nowrap text-[clamp(2.2rem,6vw,5.5rem)] font-[650] tracking-[-0.025em] leading-[1.1] text-white drop-shadow-[0_0_80px_rgba(168,85,247,0.25)]">
+        <span className="story-item text-center md:text-left whitespace-nowrap text-[clamp(2.2rem,6vw,5.5rem)] font-[650] tracking-[-0.025em] leading-[1.1] text-[#111018]">
           precision
         </span>
 
@@ -300,15 +298,15 @@ export const StorySection: React.FC = () => {
           aria-hidden="true"
         >
           <svg width="22" height="22" viewBox="0 0 18 18" fill="none" className="inline-block align-middle shrink-0">
-            <circle cx="9" cy="9" r="2" fill="#A855F7" />
-            <circle cx="9" cy="9" r="4.5" fill="#A855F7" fillOpacity="0.3" />
-            <circle cx="9" cy="9" r="8.5" fill="#A855F7" fillOpacity="0.1" />
+            <circle cx="9" cy="9" r="2" fill="#7C3AED" />
+            <circle cx="9" cy="9" r="4.5" fill="#7C3AED" fillOpacity="0.3" />
+            <circle cx="9" cy="9" r="8.5" fill="#7C3AED" fillOpacity="0.1" />
           </svg>
         </span>
 
         <div className="hidden md:block shrink-0 w-6" aria-hidden="true" />
 
-        <span className="story-item text-center md:text-left whitespace-nowrap text-[clamp(2.2rem,6vw,5.5rem)] font-[650] tracking-[-0.025em] leading-[1.1] text-white drop-shadow-[0_0_80px_rgba(168,85,247,0.25)]">
+        <span className="story-item text-center md:text-left whitespace-nowrap text-[clamp(2.2rem,6vw,5.5rem)] font-[650] tracking-[-0.025em] leading-[1.1] text-[#111018]">
           strategy
         </span>
 
@@ -322,12 +320,12 @@ export const StorySection: React.FC = () => {
         >
           <svg width="110" height="36" viewBox="0 0 100 32" fill="none" className="inline-block align-middle shrink-0">
             <path d="M0 16 C25 4, 45 28, 70 16 S90 4, 100 16" stroke="url(#fa-g-resh-2)" strokeWidth="1.6" fill="none" strokeLinecap="round" />
-            <path d="M88 10 L100 16 L88 22" stroke="#A855F7" strokeWidth="1.6" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M88 10 L100 16 L88 22" stroke="#7C3AED" strokeWidth="1.6" fill="none" strokeLinecap="round" strokeLinejoin="round" />
             <defs>
               <linearGradient id="fa-g-resh-2" x1="0" y1="0" x2="100" y2="0" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stopColor="#22D3EE" stopOpacity="0.2" />
-                <stop offset="50%" stopColor="#7C3AED" stopOpacity="1" />
-                <stop offset="100%" stopColor="#A855F7" stopOpacity="0.8" />
+                <stop offset="0%" stopColor="#C084FC" stopOpacity="0.3" />
+                <stop offset="50%" stopColor="#6D28D9" stopOpacity="1" />
+                <stop offset="100%" stopColor="#9333EA" stopOpacity="0.8" />
               </linearGradient>
             </defs>
           </svg>
@@ -335,13 +333,13 @@ export const StorySection: React.FC = () => {
 
         <div className="hidden md:block shrink-0 w-14" aria-hidden="true" />
 
-        <span className="story-item text-center md:text-left whitespace-nowrap text-[clamp(2.2rem,6vw,5.5rem)] font-light tracking-[-0.025em] leading-[1.1] text-slate-400">
+        <span className="story-item text-center md:text-left whitespace-nowrap text-[clamp(2.2rem,6vw,5.5rem)] font-light tracking-[-0.025em] leading-[1.1] text-[#777185]">
           and modern
         </span>
 
         <div className="hidden md:block shrink-0 w-4" aria-hidden="true" />
 
-        <span className="story-item text-center md:text-left whitespace-nowrap text-[clamp(2.2rem,6vw,5.5rem)] font-[650] tracking-[-0.025em] leading-[1.1] text-white drop-shadow-[0_0_80px_rgba(168,85,247,0.25)]">
+        <span className="story-item text-center md:text-left whitespace-nowrap text-[clamp(2.2rem,6vw,5.5rem)] font-[650] tracking-[-0.025em] leading-[1.1] text-[#111018]">
           architecture
         </span>
 
@@ -354,19 +352,19 @@ export const StorySection: React.FC = () => {
           aria-hidden="true"
         >
           <svg width="32" height="40" viewBox="0 0 28 36" fill="none" className="inline-block align-middle shrink-0">
-            <path d="M18 2 L8 18 L18 34" stroke="#22D3EE" strokeWidth="1.8" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.8" />
+            <path d="M18 2 L8 18 L18 34" stroke="#7C3AED" strokeWidth="1.8" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.8" />
           </svg>
         </span>
 
         <div className="hidden md:block shrink-0 w-12" aria-hidden="true" />
 
-        <span className="story-item text-center md:text-left whitespace-nowrap text-[clamp(2.2rem,6vw,5.5rem)] font-light tracking-[-0.025em] leading-[1.1] text-slate-400">
+        <span className="story-item text-center md:text-left whitespace-nowrap text-[clamp(2.2rem,6vw,5.5rem)] font-light tracking-[-0.025em] leading-[1.1] text-[#777185]">
           that helps
         </span>
 
         <div className="hidden md:block shrink-0 w-4" aria-hidden="true" />
 
-        <span className="story-item text-center md:text-left whitespace-nowrap text-[clamp(2.2rem,6vw,5.5rem)] font-[650] tracking-[-0.025em] leading-[1.1] text-white drop-shadow-[0_0_80px_rgba(168,85,247,0.25)]">
+        <span className="story-item text-center md:text-left whitespace-nowrap text-[clamp(2.2rem,6vw,5.5rem)] font-[650] tracking-[-0.025em] leading-[1.1] text-[#111018]">
           ambitious businesses
         </span>
 
@@ -383,8 +381,8 @@ export const StorySection: React.FC = () => {
             <defs>
               <radialGradient id="st-g-resh" cx="50%" cy="50%" r="50%">
                 <stop offset="0%" stopColor="#ffffff" stopOpacity="1" />
-                <stop offset="50%" stopColor="#22D3EE" stopOpacity="0.9" />
-                <stop offset="100%" stopColor="#7C3AED" stopOpacity="0.3" />
+                <stop offset="50%" stopColor="#9333EA" stopOpacity="0.9" />
+                <stop offset="100%" stopColor="#6D28D9" stopOpacity="0.6" />
               </radialGradient>
             </defs>
           </svg>
@@ -392,33 +390,31 @@ export const StorySection: React.FC = () => {
 
         <div className="hidden md:block shrink-0 w-12" aria-hidden="true" />
 
-        <span className="story-item text-center md:text-left whitespace-nowrap text-[clamp(2.2rem,6vw,5.5rem)] font-[650] tracking-[-0.025em] leading-[1.1] text-white drop-shadow-[0_0_80px_rgba(168,85,247,0.25)]">
+        <span className="story-item text-center md:text-left whitespace-nowrap text-[clamp(2.2rem,6vw,5.5rem)] font-[650] tracking-[-0.025em] leading-[1.1] text-[#111018]">
           scale faster
         </span>
 
         <div className="hidden md:block shrink-0 w-8" aria-hidden="true" />
 
-        {/* Cyan Circles */}
+        {/* Purple Accent Circles */}
         <span
           ref={(el) => { iconsRef.current[8] = el; }}
           className="story-item inline-flex items-center shrink-0"
           aria-hidden="true"
         >
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" className="inline-block align-middle shrink-0">
-            <circle cx="12" cy="12" r="2.8" fill="#22d3ee" />
-            <circle cx="12" cy="12" r="6" fill="#22d3ee" fillOpacity="0.25" />
-            <circle cx="12" cy="12" r="11.5" fill="#7C3AED" fillOpacity="0.1" />
+            <circle cx="12" cy="12" r="2.8" fill="#7C3AED" />
+            <circle cx="12" cy="12" r="6" fill="#7C3AED" fillOpacity="0.25" />
+            <circle cx="12" cy="12" r="11.5" fill="#6D28D9" fillOpacity="0.1" />
           </svg>
         </span>
 
         <div className="hidden md:block shrink-0 w-8" aria-hidden="true" />
 
         <span
-          className="story-item text-center md:text-left whitespace-nowrap text-[clamp(2.2rem,6vw,5.5rem)] font-extrabold tracking-[-0.025em] leading-[1.1]"
+          className="story-item text-center md:text-left whitespace-nowrap text-[clamp(2.2rem,6vw,5.5rem)] font-extrabold tracking-[-0.025em] leading-[1.1] bg-clip-text text-transparent"
           style={{
-            background: 'linear-gradient(90deg, #A855F7, #22D3EE)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
+            backgroundImage: 'linear-gradient(135deg, #6D28D9 0%, #9333EA 55%, #C084FC 100%)',
           }}
         >
           together
@@ -441,13 +437,13 @@ export const StorySection: React.FC = () => {
           fontWeight: 600,
           letterSpacing: '0.3em',
           textTransform: 'uppercase',
-          color: 'rgba(168,85,247,0.6)',
+          color: '#7C3AED',
           whiteSpace: 'nowrap',
         }}
         className="hidden md:flex font-mono"
       >
         <svg width="14" height="14" viewBox="0 0 12 12" fill="none" className="animate-pulse">
-          <path d="M2 2 L10 6 L2 10" stroke="#22D3EE" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M2 2 L10 6 L2 10" stroke="#7C3AED" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
         <span>Keep scrolling to explore</span>
       </p>

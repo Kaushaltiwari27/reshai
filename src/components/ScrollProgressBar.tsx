@@ -18,8 +18,12 @@ export const ScrollProgressBar: React.FC = () => {
 
   return (
     <div
-      className="fixed top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-[#7C3AED] via-[#A855F7] to-[#22D3EE] origin-left z-[99999] transition-transform duration-75 pointer-events-none shadow-[0_0_10px_rgba(168,85,247,0.8)]"
-      style={{ transform: `scaleX(${scrollProgress})` }}
+      className="fixed top-0 left-0 right-0 h-[2.5px] origin-left z-[99999] transition-transform duration-75 pointer-events-none"
+      style={{
+        transform: `scaleX(${scrollProgress})`,
+        background: 'linear-gradient(90deg, #6D28D9 0%, #9333EA 55%, #C084FC 100%)',
+        boxShadow: '0 0 8px rgba(109, 40, 217, 0.5)',
+      }}
     />
   );
 };

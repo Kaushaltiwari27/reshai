@@ -116,25 +116,28 @@ export const InteractiveDemos: React.FC<InteractiveDemosProps> = ({ onOpenBookin
   ];
 
   return (
-    <section id="demos" className="py-32 bg-[#080812] relative border-t border-purple-500/20 overflow-hidden">
+    <section id="demos" className="py-32 bg-[#F8F7FC] relative border-t border-[#E9E5F2] overflow-hidden">
       {/* Ambient Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-purple-900/10 blur-[130px] rounded-full pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[300px] bg-[#22D3EE]/8 blur-[100px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-[#C084FC]/10 blur-[130px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[300px] bg-[#7C3AED]/8 blur-[100px] rounded-full pointer-events-none" />
 
       <div className="container mx-auto px-6 max-w-6xl relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-[#22D3EE] text-xs font-semibold uppercase tracking-wider mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F2EDFF] border border-[#D8C7FA] text-[#6D28D9] text-xs font-semibold uppercase tracking-wider mb-4 shadow-sm">
             <Sparkles size={14} />
             <span>Interactive Simulator</span>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#111018] mb-6 tracking-tight">
             Experience{' '}
-            <span className="bg-gradient-to-r from-[#7C3AED] via-[#A855F7] to-[#22D3EE] bg-clip-text text-transparent">
+            <span
+              className="bg-clip-text text-transparent"
+              style={{ backgroundImage: 'linear-gradient(135deg, #6D28D9 0%, #9333EA 55%, #C084FC 100%)' }}
+            >
               RESH AI in Action
             </span>
           </h2>
-          <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+          <p className="text-lg text-[#4B4659] max-w-2xl mx-auto leading-relaxed">
             Test our interactive models below to calculate your team's operational time recovered, receive system recommendations, or preview real-time AI generation.
           </p>
         </div>
@@ -150,11 +153,11 @@ export const InteractiveDemos: React.FC<InteractiveDemosProps> = ({ onOpenBookin
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold transition-all cursor-pointer ${
                   isActive
-                    ? 'bg-gradient-to-r from-[#7C3AED] to-[#A855F7] text-white shadow-[0_0_25px_rgba(168,85,247,0.4)] border border-purple-400/40'
-                    : 'bg-[#151529]/70 text-slate-300 hover:text-white hover:bg-[#151529] border border-purple-500/20'
+                    ? 'bg-gradient-to-r from-[#6D28D9] via-[#7C3AED] to-[#9333EA] text-white shadow-[0_4px_20px_rgba(109,40,217,0.35)] border border-[#7C3AED]'
+                    : 'bg-white text-[#4B4659] hover:text-[#6D28D9] hover:bg-[#F2EDFF] border border-[#E9E5F2] shadow-sm'
                 }`}
               >
-                <Icon size={16} className={isActive ? 'text-[#22D3EE]' : 'text-slate-400'} />
+                <Icon size={16} className={isActive ? 'text-white' : 'text-[#777185]'} />
                 <span>{tab.name}</span>
               </button>
             );
@@ -162,7 +165,7 @@ export const InteractiveDemos: React.FC<InteractiveDemosProps> = ({ onOpenBookin
         </div>
 
         {/* Tab Content Box */}
-        <div className="bg-[#151529]/80 border border-purple-500/20 rounded-3xl p-6 md:p-12 relative min-h-[400px] shadow-2xl shadow-purple-950/20">
+        <div className="bg-white border border-[#E9E5F2] rounded-3xl p-6 md:p-12 relative min-h-[400px] shadow-[0_16px_40px_rgba(109,40,217,0.08)]">
           <AnimatePresence mode="wait">
             {/* TAB 1: ROI Calculator */}
             {activeTab === 'roi' && (
@@ -175,19 +178,19 @@ export const InteractiveDemos: React.FC<InteractiveDemosProps> = ({ onOpenBookin
                 className="grid grid-cols-1 lg:grid-cols-2 gap-12"
               >
                 <div>
-                  <h3 className="text-2xl font-bold text-white mb-2">
+                  <h3 className="text-2xl font-bold text-[#111018] mb-2">
                     How much time can automation recover?
                   </h3>
-                  <p className="text-slate-400 mb-8 text-sm leading-relaxed">
+                  <p className="text-[#4B4659] mb-8 text-sm leading-relaxed">
                     Enter your team details to calculate the monthly manual hours and cost recovered by deploying intelligent AI workflows.
                   </p>
 
                   <div className="space-y-6">
                     {/* Team Size Slider */}
                     <div>
-                      <div className="flex justify-between text-sm text-slate-300 mb-2">
+                      <div className="flex justify-between text-sm text-[#4B4659] mb-2">
                         <span>Team Size</span>
-                        <span className="text-[#22D3EE] font-semibold">{teamSize} members</span>
+                        <span className="text-[#6D28D9] font-bold">{teamSize} members</span>
                       </div>
                       <input
                         type="range"
@@ -195,15 +198,15 @@ export const InteractiveDemos: React.FC<InteractiveDemosProps> = ({ onOpenBookin
                         max="50"
                         value={teamSize}
                         onChange={(e) => setTeamSize(e.target.value)}
-                        className="w-full accent-[#7C3AED] h-1.5 bg-slate-800 rounded-lg cursor-pointer"
+                        className="w-full accent-[#6D28D9] h-2 bg-[#E9E5F2] rounded-lg cursor-pointer"
                       />
                     </div>
 
                     {/* Hours Spent Slider */}
                     <div>
-                      <div className="flex justify-between text-sm text-slate-300 mb-2">
+                      <div className="flex justify-between text-sm text-[#4B4659] mb-2">
                         <span>Hours spent per week on repetitive tasks</span>
-                        <span className="text-[#22D3EE] font-semibold">{hoursPerWeek} hrs/week</span>
+                        <span className="text-[#6D28D9] font-bold">{hoursPerWeek} hrs/week</span>
                       </div>
                       <input
                         type="range"
@@ -211,13 +214,13 @@ export const InteractiveDemos: React.FC<InteractiveDemosProps> = ({ onOpenBookin
                         max="40"
                         value={hoursPerWeek}
                         onChange={(e) => setHoursPerWeek(e.target.value)}
-                        className="w-full accent-[#7C3AED] h-1.5 bg-slate-800 rounded-lg cursor-pointer"
+                        className="w-full accent-[#6D28D9] h-2 bg-[#E9E5F2] rounded-lg cursor-pointer"
                       />
                     </div>
 
                     {/* Salary Slider & Currency Selector */}
                     <div>
-                      <div className="flex justify-between items-center text-sm text-slate-300 mb-2">
+                      <div className="flex justify-between items-center text-sm text-[#4B4659] mb-2">
                         <span>Average Monthly Compensation per Member</span>
                         <select
                           value={currency}
@@ -225,7 +228,7 @@ export const InteractiveDemos: React.FC<InteractiveDemosProps> = ({ onOpenBookin
                             setCurrency(e.target.value);
                             setSalary(e.target.value === '₹' ? '20000' : '2500');
                           }}
-                          className="bg-[#080812] border border-purple-500/30 text-white rounded-lg px-2 py-0.5 text-xs outline-none focus:border-[#22D3EE]"
+                          className="bg-[#F8F7FC] border border-[#D8C7FA] text-[#111018] rounded-lg px-2.5 py-1 text-xs outline-none focus:border-[#6D28D9]"
                         >
                           <option value="₹">INR (₹)</option>
                           <option value="$">USD ($)</option>
@@ -240,9 +243,9 @@ export const InteractiveDemos: React.FC<InteractiveDemosProps> = ({ onOpenBookin
                         step={getSalaryRange().step}
                         value={salary}
                         onChange={(e) => setSalary(e.target.value)}
-                        className="w-full accent-[#7C3AED] h-1.5 bg-slate-800 rounded-lg cursor-pointer"
+                        className="w-full accent-[#6D28D9] h-2 bg-[#E9E5F2] rounded-lg cursor-pointer"
                       />
-                      <div className="text-[#22D3EE] font-medium mt-2 font-mono">
+                      <div className="text-[#6D28D9] font-bold mt-2 font-mono">
                         {currency}
                         {parseInt(salary, 10).toLocaleString('en-IN')} / month
                       </div>
@@ -251,28 +254,28 @@ export const InteractiveDemos: React.FC<InteractiveDemosProps> = ({ onOpenBookin
                 </div>
 
                 {/* ROI Output Card */}
-                <div className="bg-[#080812] border border-purple-500/30 rounded-2xl p-8 flex flex-col justify-center relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#7C3AED]/20 blur-[50px] rounded-full pointer-events-none" />
-                  <h4 className="text-xs text-[#22D3EE] uppercase tracking-widest font-semibold font-mono mb-8">
+                <div className="bg-[#F8F7FC] border border-[#D8C7FA] rounded-2xl p-8 flex flex-col justify-center relative overflow-hidden shadow-sm">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#C084FC]/20 blur-[50px] rounded-full pointer-events-none" />
+                  <h4 className="text-xs text-[#6D28D9] uppercase tracking-widest font-semibold font-mono mb-8">
                     Estimated Operational Impact
                   </h4>
 
                   <div className="space-y-8 relative z-10">
                     <div>
-                      <div className="text-4xl sm:text-5xl font-bold bg-gradient-to-b from-white via-slate-100 to-purple-200 bg-clip-text text-transparent mb-2">
+                      <div className="text-4xl sm:text-5xl font-bold text-[#111018] mb-2 font-mono">
                         {calculateROI().hours} hrs
                       </div>
-                      <div className="text-slate-400 text-sm">Recovered Operational Hours / Month</div>
+                      <div className="text-[#4B4659] text-sm">Recovered Operational Hours / Month</div>
                     </div>
 
-                    <div className="w-full h-[1px] bg-purple-500/20" />
+                    <div className="w-full h-[1px] bg-[#E9E5F2]" />
 
                     <div>
-                      <div className="text-4xl sm:text-5xl font-bold text-[#22D3EE] mb-2 font-mono">
+                      <div className="text-4xl sm:text-5xl font-bold text-[#6D28D9] mb-2 font-mono">
                         {currency}
                         {calculateROI().moneySaved.toLocaleString('en-IN')}
                       </div>
-                      <div className="text-slate-400 text-sm">Potential Operational Capacity Value</div>
+                      <div className="text-[#4B4659] text-sm">Potential Operational Capacity Value</div>
                     </div>
                   </div>
 
@@ -280,7 +283,7 @@ export const InteractiveDemos: React.FC<InteractiveDemosProps> = ({ onOpenBookin
                     <button
                       type="button"
                       onClick={() => onOpenBooking ? onOpenBooking(`ROI Estimate: ${calculateROI().hours} hrs / ${currency}${calculateROI().moneySaved.toLocaleString('en-IN')}`) : window.location.assign('/book')}
-                      className="mt-8 block w-full py-3.5 rounded-xl bg-gradient-to-r from-[#7C3AED] to-[#A855F7] text-white text-center font-semibold hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all cursor-pointer text-sm"
+                      className="mt-8 block w-full py-3.5 rounded-xl bg-gradient-to-r from-[#6D28D9] via-[#7C3AED] to-[#9333EA] text-white text-center font-semibold hover:shadow-[0_4px_24px_rgba(109,40,217,0.35)] transition-all cursor-pointer text-sm"
                     >
                       Book a Strategy Call with this ROI Scope
                     </button>
@@ -300,17 +303,17 @@ export const InteractiveDemos: React.FC<InteractiveDemosProps> = ({ onOpenBookin
                 className="max-w-3xl mx-auto"
               >
                 <div className="text-center mb-10">
-                  <h3 className="text-2xl font-bold text-white mb-2">
+                  <h3 className="text-2xl font-bold text-[#111018] mb-2">
                     Which AI System Does Your Business Need?
                   </h3>
-                  <p className="text-slate-400 text-sm">
+                  <p className="text-[#4B4659] text-sm">
                     Select your primary sector to receive an architectural recommendation tailored to your workflow.
                   </p>
                 </div>
 
                 {!recommendation && !isAnalyzing && (
                   <div className="space-y-6">
-                    <label className="text-sm text-slate-300 block text-center font-medium">
+                    <label className="text-sm text-[#4B4659] block text-center font-medium">
                       Select your primary industry:
                     </label>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
@@ -318,10 +321,10 @@ export const InteractiveDemos: React.FC<InteractiveDemosProps> = ({ onOpenBookin
                         <button
                           key={item}
                           onClick={() => setIndustry(item)}
-                          className={`p-4 text-sm rounded-xl border transition-all capitalize cursor-pointer font-medium ${
+                          className={`p-4 text-sm rounded-xl border transition-all capitalize cursor-pointer font-semibold ${
                             industry === item
-                              ? 'bg-purple-900/30 border-[#22D3EE] text-[#22D3EE] shadow-[0_0_15px_rgba(34,211,238,0.2)]'
-                              : 'bg-[#080812] border-purple-500/20 text-slate-300 hover:border-purple-400/50'
+                              ? 'bg-[#F2EDFF] border-[#6D28D9] text-[#6D28D9] shadow-sm'
+                              : 'bg-white border-[#E9E5F2] text-[#4B4659] hover:border-[#D8C7FA] hover:bg-[#F8F7FC]'
                           }`}
                         >
                           {item}
@@ -332,7 +335,7 @@ export const InteractiveDemos: React.FC<InteractiveDemosProps> = ({ onOpenBookin
                     <button
                       onClick={handleAnalyze}
                       disabled={!industry}
-                      className="w-full mt-6 py-3.5 rounded-xl bg-gradient-to-r from-[#7C3AED] to-[#A855F7] text-white font-semibold hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all disabled:opacity-40 flex items-center justify-center gap-2 cursor-pointer"
+                      className="w-full mt-6 py-3.5 rounded-xl bg-gradient-to-r from-[#6D28D9] via-[#7C3AED] to-[#9333EA] text-white font-semibold hover:shadow-[0_4px_24px_rgba(109,40,217,0.35)] transition-all disabled:opacity-40 flex items-center justify-center gap-2 cursor-pointer"
                     >
                       <Sparkles size={18} />
                       <span>Analyze Recommended Architecture</span>
@@ -341,9 +344,9 @@ export const InteractiveDemos: React.FC<InteractiveDemosProps> = ({ onOpenBookin
                 )}
 
                 {isAnalyzing && (
-                  <div className="py-20 flex flex-col items-center justify-center text-[#22D3EE]">
+                  <div className="py-20 flex flex-col items-center justify-center text-[#6D28D9]">
                     <Loader2 size={40} className="animate-spin mb-4" />
-                    <p className="font-medium animate-pulse text-slate-200">
+                    <p className="font-semibold animate-pulse text-[#4B4659]">
                       Analyzing workflow requirements and integration patterns...
                     </p>
                   </div>
@@ -353,18 +356,18 @@ export const InteractiveDemos: React.FC<InteractiveDemosProps> = ({ onOpenBookin
                   <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="bg-[#080812] border border-purple-500/30 p-8 rounded-2xl text-center"
+                    className="bg-[#F8F7FC] border border-[#D8C7FA] p-8 rounded-2xl text-center"
                   >
-                    <div className="w-16 h-16 bg-purple-900/30 border border-purple-500/30 rounded-full flex items-center justify-center mx-auto mb-6 text-[#22D3EE]">
+                    <div className="w-16 h-16 bg-[#F2EDFF] border border-[#D8C7FA] rounded-full flex items-center justify-center mx-auto mb-6 text-[#6D28D9]">
                       <Sparkles size={30} />
                     </div>
-                    <h4 className="text-[#22D3EE] text-xs font-mono font-semibold tracking-widest uppercase mb-2">
+                    <h4 className="text-[#6D28D9] text-xs font-mono font-semibold tracking-widest uppercase mb-2">
                       Recommended System Architecture
                     </h4>
-                    <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">
+                    <h3 className="text-2xl sm:text-3xl font-bold text-[#111018] mb-4">
                       {recommendation.title}
                     </h3>
-                    <p className="text-slate-300 mb-8 max-w-xl mx-auto text-sm leading-relaxed">
+                    <p className="text-[#4B4659] mb-8 max-w-xl mx-auto text-sm leading-relaxed">
                       {recommendation.reason}
                     </p>
 
@@ -374,14 +377,14 @@ export const InteractiveDemos: React.FC<InteractiveDemosProps> = ({ onOpenBookin
                           setRecommendation(null);
                           setIndustry('');
                         }}
-                        className="px-6 py-3 rounded-full border border-purple-500/30 text-slate-300 hover:text-white hover:bg-purple-900/20 transition-all cursor-pointer text-sm"
+                        className="px-6 py-3 rounded-full border border-[#D8C7FA] text-[#4B4659] hover:text-[#111018] hover:bg-white transition-all cursor-pointer text-sm font-medium"
                       >
                         Select Another Industry
                       </button>
                       <button
                         type="button"
                         onClick={() => onOpenBooking ? onOpenBooking(recommendation.title) : window.location.assign('/book')}
-                        className="px-6 py-3 rounded-full bg-gradient-to-r from-[#7C3AED] to-[#A855F7] text-white font-semibold hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all text-sm cursor-pointer"
+                        className="px-6 py-3 rounded-full bg-gradient-to-r from-[#6D28D9] via-[#7C3AED] to-[#9333EA] text-white font-semibold hover:shadow-[0_4px_24px_rgba(109,40,217,0.35)] transition-all text-sm cursor-pointer"
                       >
                         Book Architecture Consultation
                       </button>
@@ -402,10 +405,10 @@ export const InteractiveDemos: React.FC<InteractiveDemosProps> = ({ onOpenBookin
                 className="max-w-3xl mx-auto"
               >
                 <div className="text-center mb-10">
-                  <h3 className="text-2xl font-bold text-white mb-2">
+                  <h3 className="text-2xl font-bold text-[#111018] mb-2">
                     AI Messaging &amp; Value Generator
                   </h3>
-                  <p className="text-slate-400 text-sm">
+                  <p className="text-[#4B4659] text-sm">
                     Enter your business niche to preview instant AI-generated positioning copy and conversion headers.
                   </p>
                 </div>
@@ -416,12 +419,12 @@ export const InteractiveDemos: React.FC<InteractiveDemosProps> = ({ onOpenBookin
                     value={niche}
                     onChange={(e) => setNiche(e.target.value)}
                     placeholder="e.g. Real Estate Agency, Dental Clinic, SaaS Platform..."
-                    className="flex-1 bg-[#080812] border border-purple-500/30 rounded-xl px-5 py-3.5 text-white focus:outline-none focus:border-[#22D3EE] transition-colors w-full placeholder:text-slate-500 text-sm"
+                    className="flex-1 bg-white border border-[#E9E5F2] rounded-xl px-5 py-3.5 text-[#111018] focus:outline-none focus:border-[#6D28D9] transition-colors w-full placeholder:text-[#777185] text-sm shadow-sm"
                   />
                   <button
                     onClick={handleGenerateCopy}
                     disabled={!niche || isGenerating}
-                    className="px-7 py-3.5 rounded-xl bg-gradient-to-r from-[#7C3AED] to-[#A855F7] text-white font-semibold hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all disabled:opacity-40 flex items-center justify-center gap-2 w-full sm:w-auto shrink-0 cursor-pointer text-sm"
+                    className="px-7 py-3.5 rounded-xl bg-gradient-to-r from-[#6D28D9] via-[#7C3AED] to-[#9333EA] text-white font-semibold hover:shadow-[0_4px_24px_rgba(109,40,217,0.35)] transition-all disabled:opacity-40 flex items-center justify-center gap-2 w-full sm:w-auto shrink-0 cursor-pointer text-sm"
                   >
                     {isGenerating ? (
                       <Loader2 size={18} className="animate-spin" />
@@ -436,27 +439,27 @@ export const InteractiveDemos: React.FC<InteractiveDemosProps> = ({ onOpenBookin
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="bg-[#080812] border border-purple-500/30 p-8 md:p-10 rounded-2xl relative overflow-hidden"
+                    className="bg-[#F8F7FC] border border-[#D8C7FA] p-8 md:p-10 rounded-2xl relative overflow-hidden"
                   >
-                    <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-[#7C3AED] to-[#22D3EE]" />
-                    <div className="inline-block px-3 py-1 bg-purple-500/10 text-[#22D3EE] text-xs font-mono font-semibold rounded-full mb-5 uppercase tracking-wider border border-purple-500/20">
+                    <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-[#6D28D9] to-[#9333EA]" />
+                    <div className="inline-block px-3 py-1 bg-[#F2EDFF] text-[#6D28D9] text-xs font-mono font-semibold rounded-full mb-5 uppercase tracking-wider border border-[#D8C7FA]">
                       {copyResult.tagline}
                     </div>
-                    <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 leading-tight">
+                    <h2 className="text-2xl md:text-3xl font-bold text-[#111018] mb-6 leading-tight">
                       {copyResult.headline}
                     </h2>
-                    <button className="px-6 py-2.5 bg-white text-black font-semibold rounded-lg text-sm hover:bg-[#22D3EE] transition-colors cursor-pointer">
+                    <button className="px-6 py-2.5 bg-[#111018] text-white font-semibold rounded-lg text-sm hover:bg-[#6D28D9] transition-colors cursor-pointer">
                       {copyResult.cta}
                     </button>
 
-                    <div className="mt-8 pt-6 border-t border-purple-500/15 text-center">
-                      <p className="text-slate-400 text-sm mb-3">
+                    <div className="mt-8 pt-6 border-t border-[#E9E5F2] text-center">
+                      <p className="text-[#4B4659] text-sm mb-3">
                         Want RESH AI to architect the complete automation stack for your business?
                       </p>
                       <button
                         type="button"
                         onClick={() => onOpenBooking ? onOpenBooking(`Copywriter: ${copyResult.headline}`) : window.location.assign('/book')}
-                        className="text-[#22D3EE] text-sm font-semibold hover:underline inline-flex items-center gap-1.5 cursor-pointer"
+                        className="text-[#6D28D9] text-sm font-semibold hover:underline inline-flex items-center gap-1.5 cursor-pointer"
                       >
                         <span>Schedule a Technical Consultation</span>
                         <ArrowRight size={14} />

@@ -58,11 +58,11 @@ export const CustomCursor: React.FC = () => {
           width: cursorText ? 80 : isHovered ? 50 : 32,
           height: cursorText ? 80 : isHovered ? 50 : 32,
           backgroundColor: cursorText
-            ? 'rgba(124, 58, 237, 0.25)'
+            ? 'rgba(109, 40, 217, 0.15)'
             : isHovered
-            ? 'rgba(124, 58, 237, 0.12)'
+            ? 'rgba(124, 58, 237, 0.08)'
             : 'transparent',
-          borderColor: isHovered ? '#22D3EE' : 'rgba(168, 85, 247, 0.3)',
+          borderColor: isHovered ? '#7C3AED' : 'rgba(168, 85, 247, 0.35)',
         }}
         transition={{
           type: 'spring',
@@ -72,7 +72,7 @@ export const CustomCursor: React.FC = () => {
         }}
       >
         {cursorText && (
-          <span className="text-[10px] font-bold tracking-widest text-[#22D3EE] uppercase select-none">
+          <span className="text-[10px] font-bold tracking-widest text-[#6D28D9] uppercase select-none">
             {cursorText}
           </span>
         )}
@@ -81,7 +81,7 @@ export const CustomCursor: React.FC = () => {
       {/* Inner Dot */}
       {!cursorText && (
         <motion.div
-          className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full bg-[#22D3EE] shadow-[0_0_8px_#22D3EE] pointer-events-none"
+          className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full bg-[#7C3AED] shadow-[0_0_8px_rgba(124,58,237,0.5)] pointer-events-none"
           animate={{
             x: mousePosition.x - 3,
             y: mousePosition.y - 3,

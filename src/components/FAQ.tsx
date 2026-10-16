@@ -41,7 +41,7 @@ export const FAQ: React.FC = () => {
   };
 
   return (
-    <section id="faq" className="py-32 bg-[#080812] relative border-t border-purple-500/20">
+    <section id="faq" className="py-32 bg-white relative border-t border-[#E9E5F2]">
       <div className="container mx-auto px-6 max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -49,16 +49,19 @@ export const FAQ: React.FC = () => {
           viewport={{ once: true }}
           className="mb-20 text-center"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-[#22D3EE] text-xs font-semibold uppercase tracking-wider mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F2EDFF] border border-[#D8C7FA] text-[#6D28D9] text-xs font-semibold uppercase tracking-wider mb-4 shadow-sm">
             Common Inquiries
           </div>
-          <h2 className="text-[40px] md:text-[56px] font-bold text-white leading-[1.1] mb-6">
+          <h2 className="text-[40px] md:text-[56px] font-bold text-[#111018] leading-[1.1] mb-6">
             Frequently Asked{' '}
-            <span className="bg-gradient-to-r from-[#7C3AED] via-[#A855F7] to-[#22D3EE] bg-clip-text text-transparent">
+            <span
+              className="bg-clip-text text-transparent"
+              style={{ backgroundImage: 'linear-gradient(135deg, #6D28D9 0%, #9333EA 55%, #C084FC 100%)' }}
+            >
               Questions
             </span>
           </h2>
-          <p className="text-slate-400 text-lg max-w-xl mx-auto">
+          <p className="text-[#4B4659] text-lg max-w-xl mx-auto leading-relaxed">
             Everything you need to know about our technology, integration process, and security standards.
           </p>
         </motion.div>
@@ -75,8 +78,8 @@ export const FAQ: React.FC = () => {
                 transition={{ delay: 0.06 * index }}
                 className={`border rounded-2xl overflow-hidden transition-all duration-300 ${
                   isOpen
-                    ? 'border-purple-400/50 bg-[#151529] shadow-lg shadow-purple-950/20'
-                    : 'border-purple-500/20 bg-[#151529]/70 hover:border-purple-400/30'
+                    ? 'border-[#7C3AED] bg-[#F8F7FC] shadow-[0_4px_20px_rgba(109,40,217,0.08)]'
+                    : 'border-[#E9E5F2] bg-white hover:border-[#D8C7FA]'
                 }`}
               >
                 <button
@@ -84,17 +87,17 @@ export const FAQ: React.FC = () => {
                   className="w-full flex items-center justify-between p-6 sm:p-7 text-left cursor-pointer"
                 >
                   <span
-                    className={`text-base sm:text-lg font-semibold transition-colors pr-4 ${
-                      isOpen ? 'text-[#22D3EE]' : 'text-white'
+                    className={`text-base sm:text-lg font-bold transition-colors pr-4 ${
+                      isOpen ? 'text-[#6D28D9]' : 'text-[#111018]'
                     }`}
                   >
                     {faq.q}
                   </span>
-                  <span className="text-slate-400 shrink-0 ml-2">
+                  <span className="shrink-0 ml-2">
                     {isOpen ? (
-                      <Minus size={20} className="text-[#22D3EE]" />
+                      <Minus size={20} className="text-[#6D28D9]" />
                     ) : (
-                      <Plus size={20} className="text-purple-400" />
+                      <Plus size={20} className="text-[#7C3AED]" />
                     )}
                   </span>
                 </button>
@@ -107,7 +110,7 @@ export const FAQ: React.FC = () => {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.3, ease: 'easeInOut' }}
                     >
-                      <div className="px-6 sm:px-7 pb-6 sm:pb-7 text-slate-300 leading-relaxed text-sm sm:text-base border-t border-purple-500/10 pt-4">
+                      <div className="px-6 sm:px-7 pb-6 sm:pb-7 text-[#4B4659] leading-relaxed text-sm sm:text-base border-t border-[#E9E5F2] pt-4">
                         {faq.a}
                       </div>
                     </motion.div>

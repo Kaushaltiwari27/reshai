@@ -16,25 +16,25 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenBooking }) => {
   };
 
   return (
-    <section className="py-32 bg-[#080812] relative border-t border-purple-500/20 overflow-hidden">
-      {/* Background Animated Glows */}
+    <section className="py-32 bg-[#F2EDFF] relative border-t border-[#D8C7FA] overflow-hidden">
+      {/* Background Animated Lavender Glows */}
       <div className="absolute inset-0 z-0 bg-transparent pointer-events-none">
         <motion.div
           animate={{
             scale: [1, 1.15, 1],
-            opacity: [0.35, 0.6, 0.35],
+            opacity: [0.25, 0.45, 0.25],
           }}
           transition={{
             duration: 8,
             repeat: Infinity,
             ease: 'easeInOut',
           }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[600px] max-w-5xl bg-[#7C3AED]/15 blur-[140px] rounded-full mix-blend-screen pointer-events-none"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[600px] max-w-5xl bg-[#C084FC]/30 blur-[140px] rounded-full pointer-events-none"
         />
         <motion.div
           animate={{
             x: [0, 40, 0],
-            opacity: [0.2, 0.4, 0.2],
+            opacity: [0.15, 0.35, 0.15],
           }}
           transition={{
             duration: 9,
@@ -42,9 +42,8 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenBooking }) => {
             ease: 'easeInOut',
             delay: 1.5,
           }}
-          className="absolute -top-[10%] right-[15%] w-[500px] h-[500px] bg-[#22D3EE]/10 blur-[150px] rounded-full mix-blend-screen pointer-events-none"
+          className="absolute -top-[10%] right-[15%] w-[500px] h-[500px] bg-[#7C3AED]/20 blur-[150px] rounded-full pointer-events-none"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#080812] via-transparent to-[#080812] pointer-events-none z-10" />
       </div>
 
       <div className="container mx-auto px-6 max-w-5xl relative z-10 text-center">
@@ -54,17 +53,20 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenBooking }) => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-[#22D3EE] text-xs font-semibold uppercase tracking-wider mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#D8C7FA] text-[#6D28D9] text-xs font-semibold uppercase tracking-wider mb-6 shadow-sm">
             Ready to Transform Operations?
           </div>
 
-          <h2 className="text-[38px] sm:text-[50px] md:text-[68px] font-bold text-white leading-[1.05] mb-6 tracking-tight">
+          <h2 className="text-[38px] sm:text-[50px] md:text-[68px] font-bold text-[#111018] leading-[1.05] mb-6 tracking-tight">
             Your Next Competitive Advantage{' '}
-            <span className="bg-gradient-to-r from-[#7C3AED] via-[#A855F7] to-[#22D3EE] bg-clip-text text-transparent">
+            <span
+              className="bg-clip-text text-transparent"
+              style={{ backgroundImage: 'linear-gradient(135deg, #6D28D9 0%, #9333EA 55%, #C084FC 100%)' }}
+            >
               Starts with AI.
             </span>
           </h2>
-          <p className="text-lg md:text-xl text-slate-300 mb-12 max-w-2xl mx-auto font-normal leading-relaxed">
+          <p className="text-lg md:text-xl text-[#4B4659] mb-12 max-w-2xl mx-auto font-normal leading-relaxed">
             Stop losing leads to response delays and operational bottlenecks. Partner with RESH AI to design and deploy autonomous systems that scale with your business.
           </p>
 
@@ -73,21 +75,16 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenBooking }) => {
               <button
                 type="button"
                 onClick={handleBooking}
-                className="relative inline-flex items-center justify-center p-[1px] rounded-full overflow-hidden group bg-gradient-to-r from-[#7C3AED] via-[#A855F7] to-[#22D3EE] transition-all hover:shadow-[0_0_35px_rgba(168,85,247,0.5)] w-full sm:w-auto active:scale-95"
+                className="relative inline-flex items-center justify-center px-[42px] py-[18px] rounded-full bg-gradient-to-r from-[#6D28D9] via-[#7C3AED] to-[#9333EA] text-white text-[16px] font-semibold tracking-wide shadow-[0_6px_30px_rgba(109,40,217,0.35)] hover:shadow-[0_8px_40px_rgba(109,40,217,0.5)] transition-all w-full sm:w-auto active:scale-95 cursor-pointer"
               >
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60%] h-[3px] bg-white opacity-80 blur-[3px] group-hover:opacity-100 group-hover:w-[90%] transition-all duration-300" />
-                <div className="relative bg-gradient-to-r from-[#7C3AED] to-[#6D28D9] rounded-full px-[42px] py-[18px] h-full w-full flex items-center justify-center">
-                  <span className="text-white text-[16px] font-semibold tracking-wide">
-                    Book Your Strategy Call
-                  </span>
-                </div>
+                Book Your Strategy Call
               </button>
             </Magnetic>
 
             <Magnetic>
               <a
-                href="#services"
-                className="px-[38px] py-[18px] rounded-full border border-purple-500/30 text-white font-semibold text-[16px] hover:bg-purple-900/20 hover:border-purple-400/50 transition-all w-full sm:w-auto active:scale-95 bg-[#151529]/80 backdrop-blur-md shadow-lg shadow-purple-950/20"
+                href="/#services"
+                className="px-[38px] py-[18px] rounded-full border-2 border-[#D8C7FA] text-[#6D28D9] font-bold text-[16px] hover:bg-white hover:border-[#7C3AED] transition-all w-full sm:w-auto active:scale-95 bg-white/80 shadow-sm"
               >
                 Explore Our AI Solutions
               </a>

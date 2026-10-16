@@ -12,7 +12,7 @@ const floatingPills = [
 
 export const AboutSpline: React.FC = () => {
   return (
-    <section id="about" className="py-32 bg-[#080812] relative overflow-hidden">
+    <section id="about" className="py-32 bg-[#F8F7FC] relative overflow-hidden border-t border-b border-[#E9E5F2]">
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-20">
           {/* Left Column: Heading and Narrative */}
@@ -23,21 +23,24 @@ export const AboutSpline: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
             >
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-[#22D3EE] text-xs font-semibold uppercase tracking-wider mb-4">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F2EDFF] border border-[#D8C7FA] text-[#6D28D9] text-xs font-semibold uppercase tracking-wider mb-4 shadow-sm">
                 About RESH AI
               </div>
               <h2
-                className="text-[40px] md:text-[56px] font-bold text-white leading-[1.1] mb-8"
+                className="text-[40px] md:text-[56px] font-bold text-[#111018] leading-[1.1] mb-8"
               >
                 <span>Architecting the Next Generation of </span>
-                <span className="bg-gradient-to-r from-[#7C3AED] via-[#A855F7] to-[#22D3EE] bg-clip-text text-transparent">
+                <span
+                  className="bg-clip-text text-transparent"
+                  style={{ backgroundImage: 'linear-gradient(135deg, #6D28D9 0%, #9333EA 55%, #C084FC 100%)' }}
+                >
                   Autonomous Business
                 </span>
               </h2>
-              <p className="text-[16px] md:text-[18px] text-slate-300 leading-relaxed max-w-[540px] mb-6">
-                <strong className="text-white font-semibold">RESH AI</strong> is an enterprise AI implementation partner that designs, builds, and deploys practical AI systems tailored to real business workflows.
+              <p className="text-[16px] md:text-[18px] text-[#4B4659] leading-relaxed max-w-[540px] mb-6">
+                <strong className="text-[#111018] font-semibold">RESH AI</strong> is an enterprise AI implementation partner that designs, builds, and deploys practical AI systems tailored to real business workflows.
               </p>
-              <p className="text-[15px] md:text-[16px] text-slate-400 leading-relaxed max-w-[540px]">
+              <p className="text-[15px] md:text-[16px] text-[#777185] leading-relaxed max-w-[540px]">
                 We help ambitious teams eliminate repetitive manual bottlenecks, respond to customers instantly across voice and digital channels, and unlock scalable growth without expanding overhead.
               </p>
             </motion.div>
@@ -54,7 +57,7 @@ export const AboutSpline: React.FC = () => {
                 transition={{ duration: 1.2, ease: 'easeOut' }}
                 className="w-full h-full"
               >
-                <div className="w-full h-full rounded-3xl overflow-hidden border border-purple-500/20 opacity-80 mix-blend-screen mask-radial-fade">
+                <div className="w-full h-full rounded-3xl overflow-hidden border border-[#D8C7FA] bg-white shadow-[0_10px_30px_rgba(109,40,217,0.08)] mask-radial-fade">
                   <iframe
                     src="https://my.spline.design/abstractcore-25c28ec2cb58ab4db1277a0279d46c43/"
                     frameBorder="0"
@@ -68,8 +71,8 @@ export const AboutSpline: React.FC = () => {
               </motion.div>
 
               {/* Ambient Center Glow */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] h-[340px] bg-[#7C3AED]/20 rounded-full blur-[110px] pointer-events-none" />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] bg-[#22D3EE]/15 rounded-full blur-[90px] pointer-events-none" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] h-[340px] bg-[#C084FC]/20 rounded-full blur-[110px] pointer-events-none" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] bg-[#7C3AED]/15 rounded-full blur-[90px] pointer-events-none" />
             </div>
 
             {/* Floating Pills */}
@@ -98,14 +101,14 @@ export const AboutSpline: React.FC = () => {
                     scale: 1.05,
                     zIndex: 20,
                   }}
-                  className="static lg:absolute bg-[#151529]/90 backdrop-blur-md border border-purple-500/30 px-4 py-3.5 rounded-xl shadow-2xl flex items-center justify-center text-center select-none w-full lg:w-[200px] xl:w-[220px] pointer-events-auto hover:border-[#22D3EE] hover:shadow-[0_0_20px_rgba(34,211,238,0.25)] transition-all cursor-pointer"
+                  className="static lg:absolute bg-white/95 backdrop-blur-md border border-[#E9E5F2] hover:border-[#7C3AED] px-4 py-3.5 rounded-xl shadow-[0_4px_20px_rgba(109,40,217,0.08)] hover:shadow-[0_8px_30px_rgba(109,40,217,0.18)] flex items-center justify-center text-center select-none w-full lg:w-[200px] xl:w-[220px] pointer-events-auto transition-all cursor-pointer"
                   style={{
                     top: `${(index % 3) * 32}%`,
                     left: `${46 * Math.floor(index / 3)}%`,
                     marginTop: index > 2 ? '30px' : '0',
                   }}
                 >
-                  <span className="text-slate-100 font-medium tracking-wide text-xs sm:text-sm md:text-[14px]">
+                  <span className="text-[#111018] font-semibold tracking-wide text-xs sm:text-sm md:text-[14px]">
                     {pill}
                   </span>
                 </motion.div>

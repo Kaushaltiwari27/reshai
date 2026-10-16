@@ -78,7 +78,7 @@ export const WhyUs: React.FC = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-32 bg-[#080812] relative border-t border-purple-500/20 overflow-hidden">
+    <section ref={sectionRef} className="py-32 bg-white relative border-t border-[#E9E5F2] overflow-hidden">
       <div className="container mx-auto px-6 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -86,28 +86,32 @@ export const WhyUs: React.FC = () => {
           viewport={{ once: true }}
           className="mb-20 text-center"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-[#22D3EE] text-xs font-semibold uppercase tracking-wider mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F2EDFF] border border-[#D8C7FA] text-[#6D28D9] text-xs font-semibold uppercase tracking-wider mb-4 shadow-sm">
             The RESH AI Advantage
           </div>
-          <h2 className="text-[40px] md:text-[56px] font-bold text-white leading-[1.1]">
+          <h2 className="text-[40px] md:text-[56px] font-bold text-[#111018] leading-[1.1]">
             Why Businesses Choose{' '}
-            <span className="bg-gradient-to-r from-[#7C3AED] via-[#A855F7] to-[#22D3EE] bg-clip-text text-transparent">
+            <span
+              className="bg-clip-text text-transparent"
+              style={{ backgroundImage: 'linear-gradient(135deg, #6D28D9 0%, #9333EA 55%, #C084FC 100%)' }}
+            >
               RESH AI
             </span>
           </h2>
-          <p className="mt-4 text-slate-400 max-w-2xl mx-auto text-base">
+          <p className="mt-4 text-[#4B4659] max-w-2xl mx-auto text-base leading-relaxed">
             Architected for reliability, built for production, and engineered to eliminate bottlenecks across your entire customer journey.
           </p>
         </motion.div>
 
         <div className="relative">
           {/* Background Static Line */}
-          <div className="absolute top-1/2 left-0 right-0 h-[1px] bg-purple-500/20 -translate-y-1/2 hidden lg:block z-0" />
+          <div className="absolute top-1/2 left-0 right-0 h-[1.5px] bg-[#E9E5F2] -translate-y-1/2 hidden lg:block z-0" />
 
-          {/* Animated Electric Line Scrubbed with GSAP */}
+          {/* Animated Purple Gradient Line Scrubbed with GSAP */}
           <div
             ref={lineRef}
-            className="absolute top-1/2 left-0 right-0 h-[2px] bg-gradient-to-r from-[#7C3AED] via-[#A855F7] to-[#22D3EE] -translate-y-1/2 origin-left hidden lg:block z-0 shadow-[0_0_15px_rgba(34,211,238,0.8)] will-change-transform"
+            className="absolute top-1/2 left-0 right-0 h-[2.5px] -translate-y-1/2 origin-left hidden lg:block z-0 shadow-[0_0_12px_rgba(109,40,217,0.5)] will-change-transform"
+            style={{ backgroundImage: 'linear-gradient(to right, #6D28D9, #7C3AED, #9333EA)' }}
           />
 
           {/* 6 Feature Cards */}
@@ -116,15 +120,15 @@ export const WhyUs: React.FC = () => {
               <div
                 key={feature.title}
                 ref={(el) => { cardsRef.current[index] = el; }}
-                className="bg-[#151529]/80 border border-purple-500/20 rounded-xl p-5 text-center flex flex-col items-center justify-center min-h-[160px] hover:bg-[#151529] hover:border-[#22D3EE]/50 transition-all shadow-xl shadow-purple-950/10 relative card-lift group"
+                className="bg-[#F8F7FC] border border-[#E9E5F2] rounded-xl p-5 text-center flex flex-col items-center justify-center min-h-[160px] hover:bg-white hover:border-[#D8C7FA] transition-all shadow-sm hover:shadow-[0_8px_24px_rgba(109,40,217,0.1)] relative card-lift group"
               >
                 {/* Node Connector Dot */}
-                <div className="absolute top-1/2 -translate-y-1/2 -left-[4px] w-[8px] h-[8px] bg-[#22D3EE] rounded-full hidden lg:block opacity-0 md:opacity-100 shadow-[0_0_8px_#22D3EE] group-hover:scale-150 transition-transform" />
+                <div className="absolute top-1/2 -translate-y-1/2 -left-[4px] w-[8px] h-[8px] bg-[#7C3AED] rounded-full hidden lg:block opacity-0 md:opacity-100 shadow-[0_0_8px_rgba(124,58,237,0.5)] group-hover:scale-150 transition-transform" />
 
-                <h3 className="text-white font-semibold text-[14px] mb-2 group-hover:text-[#22D3EE] transition-colors">
+                <h3 className="text-[#111018] font-bold text-[14px] mb-2 group-hover:text-[#6D28D9] transition-colors">
                   {feature.title}
                 </h3>
-                <p className="text-slate-400 text-[11px] leading-relaxed">
+                <p className="text-[#777185] text-[11px] leading-relaxed">
                   {feature.desc}
                 </p>
               </div>

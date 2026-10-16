@@ -78,7 +78,7 @@ export const Metrics: React.FC = () => {
   }, []);
 
   return (
-    <section ref={containerRef} className="py-24 bg-[#080812] relative border-b border-purple-500/20">
+    <section ref={containerRef} className="py-24 bg-[#F8F7FC] relative border-b border-[#E9E5F2]">
       <div className="container mx-auto px-6 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -87,10 +87,10 @@ export const Metrics: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-[#22D3EE] text-xs font-semibold uppercase tracking-wider mb-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F2EDFF] border border-[#D8C7FA] text-[#6D28D9] text-xs font-semibold uppercase tracking-wider mb-3 shadow-sm">
             Operational Benchmarks
           </div>
-          <h2 className="text-slate-300 text-sm sm:text-base md:text-lg uppercase tracking-widest font-medium">
+          <h2 className="text-[#4B4659] text-sm sm:text-base md:text-lg uppercase tracking-widest font-semibold">
             Proven Performance Across Modern Business Operations
           </h2>
         </motion.div>
@@ -103,21 +103,24 @@ export const Metrics: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="relative bg-[#151529]/70 border border-purple-500/20 p-8 rounded-2xl flex flex-col items-center justify-center group overflow-hidden hover:border-purple-400/50 hover:shadow-[0_0_30px_rgba(168,85,247,0.2)] transition-all card-lift"
+              className="relative bg-white border border-[#E9E5F2] hover:border-[#D8C7FA] p-8 rounded-2xl flex flex-col items-center justify-center group overflow-hidden shadow-[0_4px_20px_rgba(109,40,217,0.05)] hover:shadow-[0_12px_36px_rgba(109,40,217,0.12)] transition-all card-lift"
             >
-              {/* Top Gradient Glow Line */}
-              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#22D3EE] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="absolute inset-0 bg-gradient-to-b from-[#7C3AED]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl pointer-events-none" />
+              {/* Top Gradient Line */}
+              <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-transparent via-[#7C3AED] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-b from-[#F2EDFF]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-              <div className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-b from-white via-slate-100 to-purple-200 bg-clip-text text-transparent mb-2 relative z-10 text-center tracking-tight font-mono">
+              <div
+                className="text-3xl sm:text-4xl md:text-5xl font-bold bg-clip-text text-transparent mb-2 relative z-10 text-center tracking-tight font-mono"
+                style={{ backgroundImage: 'linear-gradient(135deg, #6D28D9 0%, #9333EA 55%, #7C3AED 100%)' }}
+              >
                 <span ref={(el) => { countersRef.current[index] = el; }}>
                   {item.displayDefault}
                 </span>
               </div>
-              <div className="text-slate-200 text-xs sm:text-sm tracking-wide font-semibold relative z-10 text-center mb-1">
+              <div className="text-[#111018] text-xs sm:text-sm tracking-wide font-bold relative z-10 text-center mb-1">
                 {item.label}
               </div>
-              <div className="text-slate-400 text-[11px] relative z-10 text-center">
+              <div className="text-[#777185] text-[11px] relative z-10 text-center">
                 {item.detail}
               </div>
             </motion.div>
