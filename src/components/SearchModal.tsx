@@ -108,6 +108,11 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
     if (isOpen) {
       setTimeout(() => inputRef.current?.focus(), 50);
       setQuery('');
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
     }
   }, [isOpen]);
 
@@ -138,14 +143,17 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[100] flex items-start justify-center pt-[10vh] px-4">
+        <div
+          data-lenis-prevent="true"
+          className="fixed inset-0 z-[100000] flex items-start justify-center pt-[10vh] px-4 overscroll-contain"
+        >
           {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-slate-900/40 backdrop-blur-md"
+            className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm"
           />
 
           {/* Modal Container */}
@@ -154,7 +162,8 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="relative w-full max-w-2xl bg-white border border-[#E9E5F2] rounded-2xl shadow-[0_24px_60px_rgba(109,40,217,0.18)] overflow-hidden z-10"
+            data-lenis-prevent="true"
+            className="relative w-full max-w-2xl bg-white border border-[#E9E5F2] rounded-2xl shadow-[0_24px_60px_rgba(109,40,217,0.18)] overflow-hidden z-10 overscroll-contain"
           >
             {/* Search Input Bar */}
             <div className="flex items-center px-6 py-4 border-b border-[#E9E5F2] bg-[#F8F7FC]">

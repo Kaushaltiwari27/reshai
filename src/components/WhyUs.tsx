@@ -115,7 +115,7 @@ export const WhyUs: React.FC = () => {
           />
 
           {/* 6 Feature Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-5 relative z-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-5 relative z-10">
             {whyUsFeatures.map((feature, index) => (
               <div
                 key={feature.title}
