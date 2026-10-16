@@ -61,12 +61,12 @@ export async function submitLeadToGoogleSheet(lead: LeadData): Promise<{ success
   const sheetUrl = getGoogleSheetUrl();
 
   try {
-    // Google Apps Script requires no-cors mode when called from browser to avoid CORS redirect errors
+    // Google Apps Script accepts text/plain without CORS preflight restrictions
     await fetch(sheetUrl, {
       method: 'POST',
       mode: 'no-cors',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'text/plain;charset=utf-8',
       },
       body: JSON.stringify({
         ...lead,
