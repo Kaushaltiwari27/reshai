@@ -13,15 +13,9 @@ import {
   Clock,
   Loader2,
   AlertCircle,
-  FileSpreadsheet,
-  Check,
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
-import {
-  submitLeadToGoogleSheet,
-  getGoogleSheetUrl,
-  setGoogleSheetUrl,
-} from '../services/leadService';
+import { submitLeadToGoogleSheet } from '../services/leadService';
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -56,12 +50,6 @@ export const BookingModal: React.FC<BookingModalProps> = ({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  // Google Sheet Configuration State
-  const [showSheetConfig, setShowSheetConfig] = useState(false);
-  const [sheetUrlInput, setSheetUrlInput] = useState('');
-  const [isSheetConfigured, setIsSheetConfigured] = useState(false);
-  const [sheetSaveSuccess, setSheetSaveSuccess] = useState(false);
-
   const solutions = [
     'Autonomous AI Voice Agents',
     'AI Sales & CRM Lead Automation',
@@ -92,11 +80,6 @@ export const BookingModal: React.FC<BookingModalProps> = ({
       setIsSubmitting(false);
       setIsSubmitted(false);
       setErrors({});
-      setShowSheetConfig(false);
-
-      const currentUrl = getGoogleSheetUrl();
-      setIsSheetConfigured(Boolean(currentUrl));
-      setSheetUrlInput(currentUrl);
     }
   }, [isOpen, preselectedPlan]);
 
@@ -138,7 +121,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
     setIsSubmitting(true);
 
     try {
-      // Dispatch lead to Google Sheet (and automatic localStorage backup)
+      // Dispatches lead directly to the integrated Google Sheet Webhook URL
       await submitLeadToGoogleSheet({
         name: formData.name.trim(),
         email: formData.email.trim(),
@@ -167,22 +150,10 @@ export const BookingModal: React.FC<BookingModalProps> = ({
     }
   };
 
-  const handleSaveSheetUrl = (e: React.FormEvent) => {
-    e.preventDefault();
-    setGoogleSheetUrl(sheetUrlInput);
-    setIsSheetConfigured(Boolean(sheetUrlInput.trim()));
-    setSheetSaveSuccess(true);
-    setTimeout(() => {
-      setSheetSaveSuccess(false);
-      setShowSheetConfig(false);
-    }, 1200);
-  };
-
   const handleClose = () => {
     setIsSubmitted(false);
     setIsSubmitting(false);
     setErrors({});
-    setShowSheetConfig(false);
     onClose();
   };
 
@@ -230,92 +201,27 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                 <div className="flex items-center gap-2 mb-1">
                   <span className="w-2 h-2 rounded-full bg-[#7C3AED] animate-pulse" />
                   <span className="text-[11px] font-mono font-bold text-[#6D28D9] uppercase tracking-wider">
-                    RESH AI Consultation
+                    RESH AI Strategy Call
                   </span>
-                  {isSheetConfigured ? (
-                    <span className="inline-flex items-center gap-1 text-[10px] font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                      <span>Sheet Connected</span>
-                    </span>
-                  ) : (
-                    <span className="inline-flex items-center gap-1 text-[10px] font-mono text-amber-700 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-200">
-                      <span>Local Backup</span>
-                    </span>
-                  )}
                 </div>
                 <h3 className="text-xl sm:text-2xl font-bold text-[#111018]">
-                  Book Strategy Call
+                  Schedule Consultation
                 </h3>
+                <p className="text-xs text-[#777185] mt-0.5">
+                  30-min technical architecture review • Free &amp; confidential
+                </p>
               </div>
 
-              <div className="flex items-center gap-2">
-                {/* Google Sheet Config Toggle */}
-                <button
-                  type="button"
-                  onClick={() => setShowSheetConfig(!showSheetConfig)}
-                  title="Configure Google Sheet Webhook"
-                  className={`p-2 rounded-xl border transition-all text-xs cursor-pointer flex items-center gap-1.5 ${
-                    showSheetConfig
-                      ? 'bg-[#F2EDFF] border-[#6D28D9] text-[#6D28D9]'
-                      : 'bg-[#F8F7FC] border-[#E9E5F2] text-[#777185] hover:text-[#111018] hover:border-[#D8C7FA]'
-                  }`}
-                >
-                  <FileSpreadsheet size={16} className="text-emerald-600" />
-                  <span className="hidden sm:inline font-mono text-[11px]">Sheet</span>
-                </button>
-
-                {/* Close Button */}
-                <button
-                  type="button"
-                  onClick={handleClose}
-                  aria-label="Close modal"
-                  className="w-9 h-9 rounded-full bg-[#F8F7FC] border border-[#E9E5F2] flex items-center justify-center text-[#777185] hover:text-[#111018] hover:bg-[#F2EDFF] hover:border-[#D8C7FA] transition-all shrink-0 cursor-pointer"
-                >
-                  <X size={18} />
-                </button>
-              </div>
+              {/* Close Button */}
+              <button
+                type="button"
+                onClick={handleClose}
+                aria-label="Close modal"
+                className="w-9 h-9 rounded-full bg-[#F8F7FC] border border-[#E9E5F2] flex items-center justify-center text-[#777185] hover:text-[#111018] hover:bg-[#F2EDFF] hover:border-[#D8C7FA] transition-all shrink-0 cursor-pointer"
+              >
+                <X size={18} />
+              </button>
             </div>
-
-            {/* Google Sheet Configuration Drawer */}
-            {showSheetConfig && (
-              <div className="bg-[#F8F7FC] border-b border-[#E9E5F2] p-4 text-xs">
-                <form onSubmit={handleSaveSheetUrl} className="space-y-2">
-                  <div className="flex items-center justify-between font-semibold text-[#111018]">
-                    <span className="flex items-center gap-1.5">
-                      <FileSpreadsheet size={15} className="text-emerald-600" />
-                      <span>Google Sheet Webhook URL:</span>
-                    </span>
-                    <a
-                      href="https://github.com/Kaushaltiwari27/reshai/blob/main/GOOGLE_SHEETS_SETUP.md"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[#6D28D9] hover:underline text-[11px]"
-                    >
-                      Setup Guide →
-                    </a>
-                  </div>
-                  <input
-                    type="url"
-                    placeholder="Paste your Apps Script Web App URL (https://script.google.com/macros/s/.../exec)"
-                    value={sheetUrlInput}
-                    onChange={(e) => setSheetUrlInput(e.target.value)}
-                    className="w-full px-3 py-2 bg-white border border-[#D8C7FA] rounded-lg text-xs font-mono text-[#111018] placeholder-slate-400 outline-none focus:border-[#6D28D9]"
-                  />
-                  <div className="flex items-center justify-between pt-1">
-                    <span className="text-[11px] text-[#777185]">
-                      All submissions are also automatically stored locally in browser storage.
-                    </span>
-                    <button
-                      type="submit"
-                      className="px-3.5 py-1.5 bg-[#6D28D9] text-white rounded-lg font-semibold text-xs flex items-center gap-1 hover:bg-[#5B21B6] transition-colors cursor-pointer"
-                    >
-                      {sheetSaveSuccess ? <Check size={14} /> : null}
-                      <span>{sheetSaveSuccess ? 'Saved!' : 'Save URL'}</span>
-                    </button>
-                  </div>
-                </form>
-              </div>
-            )}
 
             {/* Scrollable Form Body */}
             <div
@@ -497,7 +403,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                   <div className="flex items-center gap-2 text-[11px] text-[#777185] bg-[#F8F7FC] p-2.5 rounded-xl border border-[#E9E5F2]">
                     <ShieldCheck size={16} className="text-emerald-600 shrink-0" />
                     <span>
-                      Data is stored securely in your Google Sheet &amp; protected by mutual enterprise NDA.
+                      Data is encrypted &amp; dispatched directly to your Google Sheet under enterprise NDA.
                     </span>
                   </div>
 
@@ -511,7 +417,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                       {isSubmitting ? (
                         <>
                           <Loader2 size={18} className="animate-spin" />
-                          <span>Sending to Google Sheet &amp; Reserving Slot...</span>
+                          <span>Saving to Google Sheet &amp; Reserving Slot...</span>
                         </>
                       ) : (
                         <>
@@ -538,7 +444,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                       Strategy Call Confirmed!
                     </h4>
                     <p className="text-[#4B4659] text-xs max-w-md mx-auto">
-                      Your details have been saved to Google Sheets and a confirmation invite has been routed to{' '}
+                      Your details have been recorded in Google Sheets and a confirmation has been dispatched to{' '}
                       <strong className="text-[#111018]">{formData.email}</strong>.
                     </p>
                   </div>

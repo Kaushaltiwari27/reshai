@@ -14,25 +14,14 @@ export interface LeadData {
   submittedAt?: string;
 }
 
-// Default fallback / configured Google Apps Script Web App URL
-// You can also set VITE_GOOGLE_SHEET_URL in your .env file or update it via localStorage
-const STORAGE_KEY_URL = 'reshai_google_sheet_webhook_url';
+// Integrated Google Apps Script Web App Webhook URL
+export const DEFAULT_GOOGLE_SHEET_URL =
+  'https://script.google.com/macros/s/AKfycbzhwQ0lze3R3ni_wHmi_KO3vraxm5anCTphRyaXOPADUZfN4n50hSw9fk7tsVeYTE8OUw/exec';
+
 const STORAGE_KEY_LEADS = 'reshai_consultation_leads';
 
 export function getGoogleSheetUrl(): string {
-  const customUrl = localStorage.getItem(STORAGE_KEY_URL);
-  if (customUrl && customUrl.trim()) {
-    return customUrl.trim();
-  }
-  return import.meta.env.VITE_GOOGLE_SHEET_URL || '';
-}
-
-export function setGoogleSheetUrl(url: string): void {
-  if (url) {
-    localStorage.setItem(STORAGE_KEY_URL, url.trim());
-  } else {
-    localStorage.removeItem(STORAGE_KEY_URL);
-  }
+  return import.meta.env.VITE_GOOGLE_SHEET_URL || DEFAULT_GOOGLE_SHEET_URL;
 }
 
 /**
@@ -63,21 +52,13 @@ export function getLocalLeads(): LeadData[] {
 }
 
 /**
- * Submits form data directly to Google Sheet Web App endpoint
+ * Submits form data directly to the integrated Google Sheet Web App endpoint
  */
 export async function submitLeadToGoogleSheet(lead: LeadData): Promise<{ success: boolean; message: string }> {
   // Always save backup to local storage first
   saveLeadLocally(lead);
 
   const sheetUrl = getGoogleSheetUrl();
-
-  if (!sheetUrl) {
-    console.info('Google Sheet URL is not configured yet. Lead saved safely to localStorage.');
-    return {
-      success: true,
-      message: 'Saved to local storage. (Google Sheet webhook URL not yet configured)',
-    };
-  }
 
   try {
     // Google Apps Script requires no-cors mode when called from browser to avoid CORS redirect errors
@@ -95,14 +76,14 @@ export async function submitLeadToGoogleSheet(lead: LeadData): Promise<{ success
 
     return {
       success: true,
-      message: 'Lead successfully dispatched to Google Sheets!',
+      message: 'Lead successfully dispatched to Google Sheet!',
     };
   } catch (error) {
     console.error('Failed to dispatch lead to Google Sheet:', error);
     // Still return success since it is backed up in localStorage
     return {
       success: true,
-      message: 'Saved to backup storage.',
+      message: 'Saved to local backup storage.',
     };
   }
 }
