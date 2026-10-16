@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Calendar, CheckCircle2, ArrowRight, ShieldCheck, User, Building, Mail, Phone, ArrowLeft, Star } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import Footer from '../components/Footer';
@@ -19,12 +19,27 @@ export const BookCallPage: React.FC = () => {
     notes: '',
   });
 
-  const availableDates = [
-    { label: 'Today', day: 'Wed, Oct 15' },
-    { label: 'Tomorrow', day: 'Thu, Oct 16' },
-    { label: 'Friday', day: 'Fri, Oct 17' },
-    { label: 'Monday', day: 'Mon, Oct 20' },
-  ];
+  const availableDates = useMemo(() => {
+    const dates = [];
+    const today = new Date();
+    for (let i = 0; i < 4; i++) {
+      const d = new Date(today);
+      d.setDate(today.getDate() + i);
+      const label =
+        i === 0
+          ? 'Today'
+          : i === 1
+          ? 'Tomorrow'
+          : d.toLocaleDateString('en-US', { weekday: 'short' });
+      const day = d.toLocaleDateString('en-US', {
+        month: 'short',
+        day: 'numeric',
+        weekday: 'short',
+      });
+      dates.push({ label, day });
+    }
+    return dates;
+  }, []);
 
   const availableTimes = [
     '10:00 AM',
