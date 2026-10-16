@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { Calendar, CheckCircle2, ArrowRight, ShieldCheck, User, Building, Mail, Phone, ArrowLeft, Star } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import Footer from '../components/Footer';
+import { submitLeadToGoogleSheet } from '../services/leadService';
 
 export const BookCallPage: React.FC = () => {
   const [step, setStep] = useState<1 | 2 | 3>(1);
@@ -59,13 +60,29 @@ export const BookCallPage: React.FC = () => {
     'Legacy Software API Modernization',
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (step === 1) {
       setStep(2);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else if (step === 2) {
       if (!formData.name || !formData.email) return;
+
+      try {
+        await submitLeadToGoogleSheet({
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          phone: formData.phone.trim(),
+          company: formData.company.trim(),
+          service: selectedSolution,
+          date: selectedDate.trim() || 'Tomorrow',
+          time: selectedTime.trim() || '02:30 PM',
+          notes: formData.notes.trim(),
+        });
+      } catch (err) {
+        console.warn('Google Sheet submission warning:', err);
+      }
+
       setStep(3);
       window.scrollTo({ top: 0, behavior: 'smooth' });
       confetti({
