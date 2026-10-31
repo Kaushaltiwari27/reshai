@@ -1,0 +1,23 @@
+{
+  "name": "RESH AI — Enterprise AI Systems & Automation",
+  "short_name": "RESH AI",
+  "description": "Production-grade autonomous AI voice agents, intelligent lead triage, and full-stack workflow automation for modern enterprises.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#7C3AED",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/resh-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { Calendar, CheckCircle2, ArrowRight, ShieldCheck, User, Building, Mail, Phone, ArrowLeft, Star } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 import { submitLeadToGoogleSheet } from '../services/leadService';
 
 export const BookCallPage: React.FC = () => {
@@ -96,6 +97,36 @@ export const BookCallPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-white text-[#111018] font-general">
+      <SEO
+        title="Schedule a 1-on-1 AI Architecture Consultation | RESH AI"
+        description="Book a technical discovery session with RESH AI. Discover how autonomous voice agents, CRM automation, and multi-agent workflows can eliminate operational bottlenecks in 14 days."
+        keywords="Book RESH AI consultation, AI voice agent demo, AI architecture review, enterprise automation audit, schedule AI consultation"
+        canonicalPath="/book"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          "name": "Book an AI Architecture Consultation",
+          "url": "https://reshai.io/book",
+          "description": "Schedule a 30-minute discovery consultation with the RESH AI engineering team.",
+          "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://reshai.io/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Book Call",
+                "item": "https://reshai.io/book"
+              }
+            ]
+          }
+        }}
+      />
       {/* Top Simple Header */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-xl border-b border-[#E9E5F2] py-4 px-6 md:px-12">
         <div className="max-w-7xl mx-auto flex items-center justify-between">

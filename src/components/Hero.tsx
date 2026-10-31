@@ -60,6 +60,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
 
         {/* Headline */}
         <motion.h1
+          id="hero-title"
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.15, ease: 'easeOut' }}
@@ -76,6 +77,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking }) => {
 
         {/* Subtitle */}
         <motion.p
+          id="hero-description"
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3, ease: 'easeOut' }}

@@ -1,10 +1,41 @@
 import React from 'react';
 import { ArrowLeft, ShieldCheck, Lock, Server, Cpu, Database, KeyRound, Download, CheckCircle2 } from 'lucide-react';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 export const SecurityPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-white text-[#111018] font-general">
+      <SEO
+        title="Enterprise Trust, Security & Compliance Architecture | RESH AI"
+        description="Explore RESH AI's enterprise security architecture. Zero-training data privacy guarantees, SOC 2 and HIPAA aligned controls, AES-256 encryption, and private VPC deployment."
+        keywords="RESH AI security, enterprise AI security, zero-training guarantee, HIPAA compliant AI, SOC 2 AI automation, VPC isolated AI compute"
+        canonicalPath="/security"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": "Enterprise Security & Compliance",
+          "url": "https://reshai.io/security",
+          "description": "Enterprise trust, encryption standards, zero-training data privacy, and compliance infrastructure.",
+          "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://reshai.io/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Security",
+                "item": "https://reshai.io/security"
+              }
+            ]
+          }
+        }}
+      />
       {/* Header */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-xl border-b border-[#E9E5F2] py-4 px-6 md:px-12">
         <div className="max-w-7xl mx-auto flex items-center justify-between">

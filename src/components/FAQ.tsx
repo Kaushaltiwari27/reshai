@@ -76,6 +76,9 @@ export const FAQ: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.06 * index }}
+                itemScope
+                itemProp="mainEntity"
+                itemType="https://schema.org/Question"
                 className={`border rounded-2xl overflow-hidden transition-all duration-300 ${
                   isOpen
                     ? 'border-[#7C3AED] bg-[#F8F7FC] shadow-[0_4px_20px_rgba(109,40,217,0.08)]'
@@ -87,6 +90,7 @@ export const FAQ: React.FC = () => {
                   className="w-full flex items-center justify-between p-6 sm:p-7 text-left cursor-pointer"
                 >
                   <span
+                    itemProp="name"
                     className={`text-base sm:text-lg font-bold transition-colors pr-4 ${
                       isOpen ? 'text-[#6D28D9]' : 'text-[#111018]'
                     }`}
@@ -109,8 +113,14 @@ export const FAQ: React.FC = () => {
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.3, ease: 'easeInOut' }}
+                      itemScope
+                      itemProp="acceptedAnswer"
+                      itemType="https://schema.org/Answer"
                     >
-                      <div className="px-6 sm:px-7 pb-6 sm:pb-7 text-[#4B4659] leading-relaxed text-sm sm:text-base border-t border-[#E9E5F2] pt-4">
+                      <div
+                        itemProp="text"
+                        className="px-6 sm:px-7 pb-6 sm:pb-7 text-[#4B4659] leading-relaxed text-sm sm:text-base border-t border-[#E9E5F2] pt-4"
+                      >
                         {faq.a}
                       </div>
                     </motion.div>

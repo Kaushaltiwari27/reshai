@@ -19,6 +19,7 @@ import SearchModal from '../components/SearchModal';
 import AIAssistantWidget from '../components/AIAssistantWidget';
 import BookingModal from '../components/BookingModal';
 import ServiceDetailModal, { type ServiceDetail } from '../components/ServiceDetailModal';
+import SEO from '../components/SEO';
 
 export const HomePage: React.FC = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -35,6 +36,31 @@ export const HomePage: React.FC = () => {
 
   return (
     <>
+      <SEO
+        title="RESH AI | Autonomous AI Agents, Voice AI & Enterprise Automation Systems"
+        description="RESH AI engineers production-grade autonomous AI voice agents, intelligent lead triage, CRM synchronization, and custom enterprise multi-agent workflows. Eliminate repetitive work and scale operations 24/7."
+        keywords="RESH AI, AI automation agency, intelligent AI agents, AI voice agents, enterprise workflow automation, business process automation, CRM automation, autonomous AI systems, AI lead qualification"
+        canonicalPath="/"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "@id": "https://reshai.io/#webpage",
+          "url": "https://reshai.io/",
+          "name": "RESH AI Homepage",
+          "description": "Production-grade autonomous voice agents, intelligent lead qualification, and full-stack enterprise automation systems.",
+          "isPartOf": {
+            "@type": "WebSite",
+            "name": "RESH AI",
+            "url": "https://reshai.io/"
+          },
+          "about": {
+            "@type": "Organization",
+            "name": "RESH AI",
+            "url": "https://reshai.io/"
+          }
+        }}
+      />
+
       {/* Navigation Header */}
       <Navbar
         onOpenSearch={() => setIsSearchOpen(true)}

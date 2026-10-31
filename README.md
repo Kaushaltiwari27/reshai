@@ -29,6 +29,7 @@
 - [Project Directory Structure](#-project-directory-structure)
 - [Getting Started](#-getting-started)
 - [Production Build & Deployment](#-production-build--deployment)
+- [SEO, GEO & AEO Optimization](#-seo-geo--aeo-optimization)
 - [Security & Compliance Standards](#-security--compliance-standards)
 - [Author & License](#-author--license)
 
@@ -248,6 +249,27 @@ Ensure redirects are set for client-side routing:
   to = "/index.html"
   status = 200
 ```
+
+---
+
+## 🚀 SEO, GEO & AEO Optimization
+
+RESH AI includes end-to-end optimizations across all modern discovery paradigms:
+
+### 1. Traditional SEO (Search Engine Optimization)
+- **Comprehensive Metadata:** Fully configured primary meta tags, high-density keywords, author, robots, and canonical URLs.
+- **Social Graph Sharing:** Standard Open Graph (`og:*`) and Twitter Cards (`twitter:*`) with high-resolution brand cards (`1200x630`).
+- **Crawler Directives:** `public/robots.txt` granting explicit crawl access and index paths for Googlebot, Bingbot, and modern crawlers.
+- **Sitemap & PWA Manifest:** `public/sitemap.xml` with priority weighting across all routes, alongside `public/site.webmanifest` for cross-platform app indexing.
+
+### 2. GEO (Generative Engine Optimization)
+- **Standardized `llms.txt` & `llms-full.txt`:** Formatted machine-readable manifests (`/llms.txt` and `/llms-full.txt`) that instruct AI models (Perplexity, ChatGPT, Claude, Gemini, Copilot) with factual information, enterprise SLAs, voice latency metrics, and API connectors.
+- **Rich Schema.org Graph:** Complete JSON-LD Linked Data graph linking `Organization`, `WebSite`, `ProfessionalService`, `SoftwareApplication`, and `ContactPoint` schemas.
+
+### 3. AEO (Answer Engine Optimization)
+- **FAQ Schema & Microdata:** Synchronized `FAQPage` JSON-LD schema paired with HTML `itemScope` microdata on all FAQ accordions for instant Google Featured Snippet & voice assistant capture.
+- **Speakable Specification:** Direct answer definitions optimized for voice interfaces (Siri, Alexa, Google Assistant).
+- **Dynamic Per-Route Head Updates:** Client-side `SEO.tsx` component ensuring dedicated titles, descriptions, canonical links, and breadcrumbs across `/`, `/book`, `/security`, `/privacy`, and `/terms`.
 
 ---
 

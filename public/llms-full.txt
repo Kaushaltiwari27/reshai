@@ -1,0 +1,46 @@
+# RESH AI — Full Architecture & Operational Reference (llms-full.txt)
+
+## Executive Summary
+RESH AI is an enterprise AI implementation partner that builds deterministic, production-ready AI systems tailored to real business workflows. Unlike generic wrappers or experimental chatbots, RESH AI engineers custom multi-agent meshes, sub-800ms conversational voice telephonics, and automated CRM pipelines that directly eliminate operational bottlenecks and deliver verifiable ROI.
+
+## Architecture & Technical Infrastructure
+
+### Voice AI Engine
+- **End-to-End Latency:** < 800ms between user speech completion and synthesized audio output.
+- **Interruption Handling:** Duplex audio streaming with continuous voice activity detection (VAD).
+- **Telephony Connectors:** SIP trunking, WebRTC, Twilio, and Telnyx integration.
+- **Calendar & CRM Actions:** Native hooks into Google Calendar, Cal.com, Salesforce, HubSpot, and Zoho during live calls.
+
+### Lead & Pipeline Automation
+- **Lead Capture:** Instant web, voice, and API ingress.
+- **Enrichment:** Automated firmographic and intent scoring.
+- **Execution:** Automated multi-touch sequences across email, SMS, and WhatsApp with conditional branching based on prospect engagement.
+
+### Support & Knowledge Retrieval (RAG)
+- **Vector Storage:** Hybrid semantic search with dense vector embeddings and keyword BM25 retrieval.
+- **Data Governance:** Automated redaction of PII (Personally Identifiable Information) before retrieval.
+- **Human Escalation:** Intelligent sentiment scoring and automated ticket routing with summarized transcripts.
+
+### Multi-Agent Mesh
+- **Orchestration:** Directed acyclic graph (DAG) execution with deterministic state machines and fallback retries.
+- **Deployment:** Containerized worker agents running in isolated private VPCs (AWS ECS/EKS or Azure Container Apps).
+- **Monitoring:** Real-time telemetry tracking invocation latency, token usage, error rates, and task completion.
+
+## Security, Governance, and SLA
+- **Zero-Training Guarantee:** Client proprietary data and conversation logs are explicitly quarantined and never ingested into base model training sets.
+- **Encryption:** AES-256 for data at rest, TLS 1.3 for data in transit.
+- **Compliance:** SOC 2 Type II and HIPAA-compliant operational architecture patterns.
+- **Uptime SLA:** 99.9% availability backed by commercial Master Services Agreements.
+- **Code Ownership:** 100% intellectual property ownership transferred to client upon project completion.
+
+## Engagement Model & Pricing
+- **Starter Pilot:** Focused automation blueprint or single voice agent pilot, typically delivered in 14 to 21 days.
+- **AI Growth Plan:** Multi-workflow orchestration, bidirectional CRM synchronization, and team onboarding.
+- **Enterprise Scale:** Custom multi-agent mesh, dedicated VPC isolation, bespoke model fine-tuning, and 24/7 SLA support.
+
+## Contact & Official Channels
+- Website: https://reshai.io
+- Consultation Booking: https://reshai.io/book
+- Email: reshai363@gmail.com
+- LinkedIn: https://www.linkedin.com/company/resh-aii/
+- GitHub: https://github.com/Kaushaltiwari27/reshai

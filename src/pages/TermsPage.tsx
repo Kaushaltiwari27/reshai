@@ -1,10 +1,41 @@
 import React from 'react';
 import { ArrowLeft, CheckCircle2, Scale, ShieldAlert } from 'lucide-react';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 export const TermsPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-white text-[#111018] font-general">
+      <SEO
+        title="Terms of Service, Commercial MSA & 99.9% SLA | RESH AI"
+        description="Review the RESH AI Master Services Agreement (MSA), client IP ownership terms, 99.9% uptime SLA commitments, and production deployment standards."
+        keywords="RESH AI terms of service, AI SLA agreement, client IP ownership, enterprise software terms, commercial AI MSA"
+        canonicalPath="/terms"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": "Terms of Service & SLA",
+          "url": "https://reshai.io/terms",
+          "description": "Commercial terms of service, Master Services Agreement, 100% Client IP ownership, and 99.9% uptime SLA.",
+          "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://reshai.io/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Terms of Service",
+                "item": "https://reshai.io/terms"
+              }
+            ]
+          }
+        }}
+      />
       {/* Header */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-xl border-b border-[#E9E5F2] py-4 px-6 md:px-12">
         <div className="max-w-7xl mx-auto flex items-center justify-between">

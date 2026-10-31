@@ -1,0 +1,52 @@
+# Robots.txt for RESH AI (https://reshai.io)
+# Fully optimized for SEO, AEO (Answer Engine Optimization), and GEO (Generative Engine Optimization)
+
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Generative AI & Answer Engine Crawlers (explicitly permitted)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: Cohere-ai
+Allow: /
+
+User-agent: Omgilibot
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+# Sitemaps & LLMs files
+Sitemap: https://reshai.io/sitemap.xml
+# For LLMs and Generative Engines:
+# https://reshai.io/llms.txt
+# https://reshai.io/llms-full.txt

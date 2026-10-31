@@ -1,10 +1,41 @@
 import React from 'react';
 import { ArrowLeft, ShieldCheck, Lock, EyeOff, Server, CheckCircle2 } from 'lucide-react';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 export const PrivacyPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-white text-[#111018] font-general">
+      <SEO
+        title="Privacy Policy & Zero-Training Data Commitment | RESH AI"
+        description="Review the RESH AI Enterprise Privacy Policy. Learn about our strict Zero-Training guarantee: your customer conversations and enterprise data are never used to train public foundation models."
+        keywords="RESH AI privacy policy, zero-training AI guarantee, enterprise data protection, AI confidentiality, customer data isolation"
+        canonicalPath="/privacy"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": "Privacy Policy & Zero-Training Guarantee",
+          "url": "https://reshai.io/privacy",
+          "description": "Enterprise privacy policy, data governance, and Zero-Training guarantee for client data.",
+          "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://reshai.io/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Privacy Policy",
+                "item": "https://reshai.io/privacy"
+              }
+            ]
+          }
+        }}
+      />
       {/* Header */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-xl border-b border-[#E9E5F2] py-4 px-6 md:px-12">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
